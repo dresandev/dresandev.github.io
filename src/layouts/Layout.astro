@@ -1,0 +1,92 @@
+---
+import "~/styles/reset.css"
+import "~/styles/globals.css"
+
+interface Props {
+	title: string
+	description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<script is:inline>
+			const storageKey = "theme-preference"
+
+			const onClick = () => {
+				theme.value = theme.value === "light" ? "dark" : "light"
+
+				setPreference()
+			}
+
+			const getColorPreference = () => {
+				if (localStorage.getItem(storageKey)) {
+					return localStorage.getItem(storageKey)
+				}
+
+				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+			}
+
+			const setPreference = () => {
+				localStorage.setItem(storageKey, theme.value)
+				reflectPreference()
+			}
+
+			const reflectPreference = () => {
+				document.firstElementChild.setAttribute("data-theme", theme.value)
+
+				document.querySelector("#theme-toggle")?.setAttribute("aria-label", theme.value)
+			}
+
+			const theme = {
+				value: getColorPreference(),
+			}
+
+			reflectPreference()
+
+			window.onload = () => {
+				reflectPreference()
+
+				document.querySelector("#theme-toggle").addEventListener("click", onClick)
+			}
+
+			window
+				.matchMedia("(prefers-color-scheme: dark)")
+				.addEventListener("change", ({ matches: isDark }) => {
+					theme.value = isDark ? "dark" : "light"
+					setPreference()
+				})
+		</script>
+		<title>{title}</title>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#111111" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+		<link rel="icon" href="/icons/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:site_name" content={title} />
+		<meta property="og:title" content={title} />
+		<meta name="author" content="Javier Andres - Dresan" />
+		<meta name="image" content="/media/image/ogp-image.png" />
+		<meta name="image" property="og:image" content="/media/image/ogp-image.png" />
+		<meta name="og:image" content="/media/image/ogp-image.png" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://dresan.is-a.dev/" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="/media/image/ogp-image.png" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:creator" content="@dresandev" />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

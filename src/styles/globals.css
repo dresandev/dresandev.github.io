@@ -1,0 +1,29 @@
+:root {
+  --brand-fill: hsl(18, 100%, 56%);
+}
+
+[data-theme='light'] {
+  --surface: hsl(45, 18%, 82%);
+  --text: hsl(0, 0%, 7%);
+  --stroke: hsl(0, 0%, 26%);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --surface: hsl(0, 0%, 7%);
+  --text: hsl(45, 18%, 82%);
+  --stroke: hsl(0, 0%, 26%);
+  color-scheme: dark;
+}
+
+html {
+  accent-color: var(--brand-fill);
+  background: var(--surface);
+  color: var(--text);
+  text-rendering: optimizeSpeed;
+}
+
+::selection {
+  background-color: hsl(54, 100%, 50%);
+  color: hsl(0, 0%, 0%);
+}
