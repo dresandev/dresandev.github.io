@@ -1,29 +1,36 @@
 :root {
-  --brand-fill: hsl(18, 100%, 56%);
+	--brand-fill: hsl(18, 100%, 56%);
+
+	--ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1.25);
+	--ease-elastic-3: var(--ease-elastic-out-3);
+	--ease-elastic-out-4: cubic-bezier(0.5, 1.5, 0.75, 1.25);
+	--ease-elastic-4: var(--ease-elastic-out-4);
+	--ease-3: cubic-bezier(0.25, 0, 0.3, 1);
+	--ease-out-5: cubic-bezier(0, 0, 0, 1);
 }
 
-[data-theme='light'] {
-  --surface: hsl(45, 18%, 82%);
-  --text: hsl(0, 0%, 7%);
-  --stroke: hsl(0, 0%, 26%);
-  color-scheme: light;
+[data-theme="light"] {
+	--surface: hsl(45, 18%, 82%);
+	--text: hsl(0, 0%, 7%);
+	--stroke: hsl(0, 0%, 26%);
+	color-scheme: light;
 }
 
-[data-theme='dark'] {
-  --surface: hsl(0, 0%, 7%);
-  --text: hsl(45, 18%, 82%);
-  --stroke: hsl(0, 0%, 26%);
-  color-scheme: dark;
+[data-theme="dark"] {
+	--surface: hsl(0, 0%, 7%);
+	--text: hsl(45, 18%, 82%);
+	--stroke: hsl(0, 0%, 26%);
+	color-scheme: dark;
 }
 
 html {
-  accent-color: var(--brand-fill);
-  background: var(--surface);
-  color: var(--text);
-  text-rendering: optimizeSpeed;
+	accent-color: var(--brand-fill);
+	background: var(--surface);
+	color: var(--text);
+	text-rendering: optimizeSpeed;
 }
 
 ::selection {
-  background-color: hsl(54, 100%, 50%);
-  color: hsl(0, 0%, 0%);
+	background-color: hsl(54, 100%, 50%);
+	color: hsl(0, 0%, 0%);
 }
