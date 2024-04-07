@@ -27,17 +27,17 @@
 
 <style>
 	.theme-toggle {
-		--size: 28px;
+		--size: 24px;
 		inline-size: var(--size);
 		block-size: var(--size);
-		border-radius: 50%;
+		color: hsl(var(--text-hsl) / 0.7);
 		touch-action: manipulation;
 		-webkit-tap-highlight-color: transparent;
-		outline-offset: 2px;
+		transition: color 300ms;
 	}
 
-	.theme-toggle:focus-visible {
-		outline: 1px solid;
+	.theme-toggle:hover {
+		color: var(--text);
 	}
 
 	.sun-and-moon {

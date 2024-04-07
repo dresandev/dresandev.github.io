@@ -15,6 +15,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.11.6",
     "@astrojs/check": "^0.5.10",
+    "@types/intl": "^1.2.2",
     "@typescript-eslint/parser": "^7.5.0",
     "astro-eslint-parser": "^0.16.3",
     "eslint": "^8.57.0",

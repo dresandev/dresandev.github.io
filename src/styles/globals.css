@@ -1,36 +1,87 @@
-:root {
-	--brand-fill: hsl(18, 100%, 56%);
+@font-face {
+	font-family: "DM Sans";
+	font-display: swap;
+	src: url("/fonts/dm-sans-vf.ttf") format("truetype");
+}
 
+@font-face {
+	font-family: "Clash Display";
+	font-display: swap;
+	src: url("/fonts/clash-display-vf.ttf") format("truetype");
+}
+
+:root {
 	--ease-elastic-out-3: cubic-bezier(0.5, 1.25, 0.75, 1.25);
 	--ease-elastic-3: var(--ease-elastic-out-3);
 	--ease-elastic-out-4: cubic-bezier(0.5, 1.5, 0.75, 1.25);
 	--ease-elastic-4: var(--ease-elastic-out-4);
 	--ease-3: cubic-bezier(0.25, 0, 0.3, 1);
 	--ease-out-5: cubic-bezier(0, 0, 0, 1);
+
+	--brand-fill: hsl(18, 81%, 42%);
 }
 
 [data-theme="light"] {
-	--surface: hsl(45, 18%, 82%);
-	--text: hsl(0, 0%, 7%);
-	--stroke: hsl(0, 0%, 26%);
+	--surface-hsl: 0 0% 93%;
+	--text-hsl: 0 0% 7%;
+	--stroke-hsl: 0 0% 26%;
+
+	--surface: hsl(0 0% 93%);
+	--text: hsl(0 0% 7%);
+	--stroke: hsl(0 0% 26%);
+	--scrollbar-thumb-color: hsl(0, 0%, 38%);
+
 	color-scheme: light;
 }
 
 [data-theme="dark"] {
-	--surface: hsl(0, 0%, 7%);
-	--text: hsl(45, 18%, 82%);
-	--stroke: hsl(0, 0%, 26%);
+	--surface-hsl: 0 0% 7%;
+	--text-hsl: 0 0% 93%;
+	--stroke-hsl: 0 0% 26%;
+
+	--surface: hsl(0 0% 7%);
+	--text: hsl(0, 0%, 93%);
+	--stroke: hsl(0 0% 26%);
+	--scrollbar-thumb-color: hsl(0, 0%, 67%);
+	--scrollbar-thumb-hover-color: hsl(0, 0%, 44%);
+
 	color-scheme: dark;
 }
 
-html {
+::-webkit-scrollbar {
+	inline-size: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--scrollbar-thumb-color);
+	background-clip: content-box;
+	border-radius: 1rem;
+	border: 4px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--scrollbar-thumb-hover-color, var(--scrollbar-thumb-color));
+}
+
+::selection {
+	background-color: var(--brand-fill);
+	color: hsl(0 0% 100%);
+}
+
+:focus-visible {
+	outline: 2px solid var(--text);
+	outline-offset: 2px;
+	border-radius: 1px;
+}
+
+body {
+	font-family: "DM Sans", sans-serif;
 	accent-color: var(--brand-fill);
 	background: var(--surface);
 	color: var(--text);
 	text-rendering: optimizeSpeed;
-}
-
-::selection {
-	background-color: hsl(54, 100%, 50%);
-	color: hsl(0, 0%, 0%);
+	transition-property: color, background-color;
+	transition-duration: 300ms;
+	max-inline-size: 1920px;
+	margin-inline: auto;
 }

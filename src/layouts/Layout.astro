@@ -1,6 +1,7 @@
 ---
 import "~/styles/reset.css"
 import "~/styles/globals.css"
+import Header from "~/components/Header.astro"
 
 interface Props {
 	title: string
@@ -13,39 +14,6 @@ const { title, description } = Astro.props
 <!doctype html>
 <html lang="es">
 	<head>
-		<script is:inline>
-			const storageKey = "theme-preference"
-
-			const getColorPreference = () => {
-				if (localStorage.getItem(storageKey)) {
-					return localStorage.getItem(storageKey)
-				}
-
-				return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
-			}
-
-			const setPreference = () => {
-				localStorage.setItem(storageKey, theme.value)
-				reflectPreference()
-			}
-
-			const reflectPreference = () => {
-				document.firstElementChild.setAttribute("data-theme", theme.value)
-			}
-
-			const theme = {
-				value: getColorPreference(),
-			}
-
-			reflectPreference()
-
-			window
-				.matchMedia("(prefers-color-scheme: dark)")
-				.addEventListener("change", ({ matches: isDark }) => {
-					theme.value = isDark ? "dark" : "light"
-					setPreference()
-				})
-		</script>
 		<title>{title}</title>
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
@@ -73,6 +41,43 @@ const { title, description } = Astro.props
 		<meta name="twitter:creator" content="@dresandev" />
 	</head>
 	<body>
-		<slot />
+		<Header />
+		<main>
+			<slot />
+		</main>
 	</body>
 </html>
+
+<script is:inline>
+	const storageKey = "theme-preference"
+
+	const getColorPreference = () => {
+		if (localStorage.getItem(storageKey)) {
+			return localStorage.getItem(storageKey)
+		}
+
+		return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"
+	}
+
+	const setPreference = () => {
+		localStorage.setItem(storageKey, theme.value)
+		reflectPreference()
+	}
+
+	const reflectPreference = () => {
+		document.firstElementChild.setAttribute("data-theme", theme.value)
+	}
+
+	const theme = {
+		value: getColorPreference(),
+	}
+
+	reflectPreference()
+
+	window
+		.matchMedia("(prefers-color-scheme: dark)")
+		.addEventListener("change", ({ matches: isDark }) => {
+			theme.value = isDark ? "dark" : "light"
+			setPreference()
+		})
+</script>
