@@ -10,7 +10,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 		<span class="word">
 			Front-end
 			<div class="decoration">
-				<Rosette />
+				<Rosette class="rosette" />
 				<DresanAnimalogo class="animalogo" width="65" height="66" />
 			</div>
 		</span>
@@ -41,28 +41,23 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 	.word {
 		display: flex;
+		justify-content: center;
 		line-height: normal;
 	}
 
-	.word:nth-child(1) {
-		justify-content: center;
-	}
-
 	.word:nth-child(2) {
-		justify-content: flex-start;
-		align-items: center;
 		flex-wrap: wrap;
-		column-gap: 32px;
-	}
-
-	.word:nth-child(3) {
-		justify-content: flex-end;
+		column-gap: 16px;
+		align-items: center;
 	}
 
 	.decoration {
 		position: relative;
-		inline-size: clamp(5.625rem, 5.018rem + 2.589vw, 8.125rem);
-		/* TODO: cambiar el tamaño de mobile de 90 a 80 0 70 */
+		inline-size: clamp(4.375rem, 3.495rem + 3.754vw, 8rem);
+	}
+
+	.rosette {
+		block-size: auto;
 	}
 
 	.animalogo {
@@ -80,9 +75,14 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 		display: flex;
 	}
 
-	@media screen and (max-width: 425px) {
-		.decoration {
-			margin-inline: auto;
+	@media screen and (min-width: 425px) {
+		.word:nth-child(2) {
+			justify-content: flex-start;
+			column-gap: 32px;
+		}
+
+		.word:nth-child(3) {
+			justify-content: flex-end;
 		}
 	}
 </style>
