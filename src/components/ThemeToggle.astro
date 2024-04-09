@@ -1,4 +1,16 @@
-<button id="theme-toggle" class="theme-toggle" aria-label="auto" aria-live="polite">
+---
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {}
+
+const { class: className, ...props } = Astro.props
+---
+
+<button
+	id="theme-toggle"
+	class:list={["theme-toggle", className]}
+	aria-label="auto"
+	aria-live="polite"
+	{...props}
+>
 	<svg
 		class="sun-and-moon"
 		aria-hidden="true"
@@ -30,14 +42,19 @@
 		--size: 24px;
 		inline-size: var(--size);
 		block-size: var(--size);
-		color: hsl(var(--text-hsl) / 0.7);
 		touch-action: manipulation;
 		-webkit-tap-highlight-color: transparent;
 		transition: color 300ms;
 	}
 
-	.theme-toggle:hover {
-		color: var(--text);
+	@media (hover: hover) {
+		.theme-toggle {
+			color: hsl(var(--text-hsl) / 0.7);
+		}
+
+		.theme-toggle:hover {
+			color: var(--text);
+		}
 	}
 
 	.sun-and-moon {

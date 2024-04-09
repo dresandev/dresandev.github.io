@@ -1,7 +1,6 @@
 ---
 import DresanAnimalogo from "./SVG/DresanAnimalogo.astro"
-import ContactButton from "./ContactButton.astro"
-import ThemeToggle from "./ThemeToggle.astro"
+import NavMenu from "./NavMenu.astro"
 ---
 
 <header class="header">
@@ -9,72 +8,43 @@ import ThemeToggle from "./ThemeToggle.astro"
 		<DresanAnimalogo class="animalogo" />
 	</a>
 
-	<nav>
-		<ul class="nav-list">
-			<li>
-				<a class="nav-link" href="#inicio">Inicio</a>
-			</li>
-			<li>
-				<a class="nav-link" href="#proyectos">Proyectos</a>
-			</li>
-			<li>
-				<a class="nav-link" href="#sobre mí">Sobre mí</a>
-			</li>
-			<li>
-				<ContactButton />
-			</li>
-		</ul>
-	</nav>
-
-	<ThemeToggle />
+	<NavMenu />
 </header>
 
 <style>
-	.animalogo {
-		transition: opacity 300ms;
-	}
-
-	.animalogo:hover {
-		opacity: 0.7;
-	}
-
 	.header {
 		position: fixed;
-		inset-block-start: 24px;
 		inset-inline: 0;
 		z-index: 10;
 		display: flex;
 		align-items: center;
-		column-gap: 20px;
-		inline-size: fit-content;
-		padding: 8px 24px;
-		margin-inline: auto;
-		font-weight: 500;
-		border: 1px solid var(--stroke);
-		border-radius: 12px;
+		justify-content: space-between;
+		padding: 12px 24px;
+		border-block-end: 1px solid var(--stroke);
 		background-color: hsl(var(--surface-hsl) / 0.8);
 		backdrop-filter: blur(12px);
 		transition: background-color 300ms;
 	}
 
-	.nav-list {
-		display: flex;
-		align-items: center;
-		column-gap: 16px;
-		padding-inline-start: 0;
+	@media screen and (min-width: 768px) {
+		.header {
+			inset-block-start: 24px;
+			column-gap: 20px;
+			inline-size: fit-content;
+			padding-block: 8px;
+			margin-inline: auto;
+			border: 1px solid var(--stroke);
+			border-radius: 12px;
+		}
 	}
 
-	.nav-list li {
-		list-style: none;
-	}
+	@media (hover: hover) {
+		.animalogo {
+			transition: opacity 300ms;
+		}
 
-	.nav-link {
-		padding: 4px 20px;
-		color: hsl(var(--text-hsl) / 0.7);
-		transition: color 300ms;
-	}
-
-	.nav-link:hover {
-		color: initial;
+		.animalogo:hover {
+			opacity: 0.7;
+		}
 	}
 </style>

@@ -85,3 +85,7 @@ body {
 	max-inline-size: 1920px;
 	margin-inline: auto;
 }
+
+.hide-overflow {
+	overflow-y: hidden;
+}
