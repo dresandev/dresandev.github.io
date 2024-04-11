@@ -17,8 +17,12 @@
 	--ease-elastic-4: var(--ease-elastic-out-4);
 	--ease-3: cubic-bezier(0.25, 0, 0.3, 1);
 	--ease-out-5: cubic-bezier(0, 0, 0, 1);
+	--inline-space: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+	--font-dm-san: "DM Sans", sans-serif;
+	--font-clash-display: "Clash Display";
 
-	--brand-fill: hsl(18, 81%, 42%);
+	--brand-fill-hsl: 18 81% 42%;
+	--brand-fill: hsl(18 81% 42%);
 }
 
 [data-theme="light"] {
@@ -75,7 +79,7 @@
 }
 
 body {
-	font-family: "DM Sans", sans-serif;
+	font-family: var(--font-dm-san);
 	accent-color: var(--brand-fill);
 	background: var(--surface);
 	color: var(--text);
@@ -83,7 +87,15 @@ body {
 	transition-property: color, background-color;
 	transition-duration: 300ms;
 	max-inline-size: 1920px;
+	padding-inline: var(--inline-space);
 	margin-inline: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-clash-display);
 }
 
 .hide-overflow {

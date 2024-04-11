@@ -1,0 +1,61 @@
+<section class="section">
+	<h2 class="title">Sobre mí</h2>
+
+	<p class="description">
+		Hola 👋🏻, Mi nombre es Javier Andrés, pero tú puedes decirme Dresan, soy Desarrollador de
+		Software. Hago desarrollo Fullstack, pero me encanta el desarrollo Front-end, que es en lo que
+		me especializo actualmente. Soy un defensor de los pequeños detalles y gran fan de CSS (¡El
+		mejor lenguaje de programación! 🙂). Actualmente, estoy profundizando mi conocimiento en el
+		ecosistema de React, pero a futuro quiero explorar otras alternativas para el desarrollo
+		Front-end, como Vue.js.
+	</p>
+
+	<a class="download-cv-link" href="">Descargar Curriculum</a>
+</section>
+
+<style>
+	.section {
+		padding-block: clamp(6.25rem, 5.492rem + 3.236vw, 9.375rem);
+		margin-inline: auto;
+		inline-size: fit-content;
+	}
+
+	.title {
+		font-size: clamp(2.5rem, 1.893rem + 2.589vw, 5rem);
+		text-align: center;
+	}
+
+	.description,
+	.download-cv-link {
+		font-size: clamp(1.25rem, 1.098rem + 0.647vw, 1.875rem);
+	}
+
+	.description {
+		max-inline-size: 50ch;
+		padding-block: 50px 30px;
+	}
+
+	.download-cv-link {
+		position: relative;
+		font-weight: 500;
+	}
+
+	.download-cv-link::before {
+		content: "";
+		position: absolute;
+		inset-inline-start: 0;
+		inset-block-end: 0;
+		inline-size: 100%;
+		transform: scaleX(0);
+		block-size: 2px;
+		background-color: currentColor;
+		transition: transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+		transform-origin: right;
+	}
+
+	.download-cv-link:hover::before {
+		transition-timing-function: ease;
+		transform-origin: left;
+		transform: scaleX(1);
+	}
+</style>

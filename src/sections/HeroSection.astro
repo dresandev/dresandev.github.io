@@ -4,7 +4,7 @@ import Rosette from "~/components/SVG/Rosette.astro"
 import MouseIcon from "~/components/SVG/MouseIcon.astro"
 ---
 
-<section class="wrapper">
+<section class="section">
 	<h1 class="title">
 		<span class="word">Dresan</span>
 		<span class="word">
@@ -25,7 +25,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 </section>
 
 <style>
-	.wrapper {
+	.section {
 		position: relative;
 		display: flex;
 		align-items: center;
@@ -34,9 +34,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 	.title {
 		inline-size: 100%;
-		padding-inline: clamp(1rem, 0.757rem + 1.036vw, 2rem);
 		padding-block: 200px;
-		font-family: "Clash Display";
 		font-size: clamp(2.75rem, 1.279rem + 6.861vw, 9.375rem);
 	}
 
@@ -59,6 +57,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 	.rosette {
 		block-size: auto;
+		animation: spin 15s linear infinite;
 	}
 
 	.animalogo {
@@ -72,7 +71,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 	.bottom-area {
 		position: absolute;
 		inset-block-end: 40px;
-		inset-inline-start: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+		inset-inline-start: var(--inline-space);
 		display: flex;
 	}
 
@@ -84,6 +83,12 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 		.word:nth-child(3) {
 			justify-content: flex-end;
+		}
+	}
+
+	@keyframes spin {
+		to {
+			transform: rotate(360deg);
 		}
 	}
 </style>
