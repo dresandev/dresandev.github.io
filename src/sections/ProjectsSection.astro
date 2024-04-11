@@ -1,0 +1,37 @@
+---
+import { projects } from "~/data/projects"
+import ProjectCard from "~/components/ProjectCard.astro"
+---
+
+<section class="section">
+	<h2 class="title">Proyectos destacados</h2>
+	<div class="container">
+		{projects.map((project) => <ProjectCard class="projectCard" project={project} />)}
+	</div>
+</section>
+
+<style>
+	.section {
+		padding-block: 100px;
+	}
+
+	.title {
+		inline-size: min-content;
+		margin-inline: auto;
+		text-align: center;
+	}
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 32px;
+		max-inline-size: 1236px;
+		inline-size: fit-content;
+		padding-block: 100px;
+		margin-inline: auto;
+	}
+
+	.projectCard {
+		flex: 1 1 350px;
+	}
+</style>

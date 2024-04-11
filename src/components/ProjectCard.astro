@@ -1,0 +1,88 @@
+---
+import type { Project } from "~/types"
+import Link from "./Link.astro"
+
+interface Props {
+	class?: string
+	project: Project
+}
+
+const { class: className, project, ...props } = Astro.props
+
+const { name, description, links, tags, imageUrl } = project
+---
+
+<article class:list={["card", className]} {...props}>
+	<div class="info">
+		<h1 class="title">{name}</h1>
+		<p>{description}</p>
+
+		<div class="tags">
+			{tags.map((tag) => <span style={{ color: tag.color }}>#{tag.label}</span>)}
+		</div>
+
+		<div class="links">
+			{
+				links.map((link) => (
+					<Link href={link.url} target="_blank">
+						{link.label}
+					</Link>
+				))
+			}
+		</div>
+	</div>
+
+	<picture class="picture">
+		<img
+			class="image"
+			src={imageUrl}
+			alt={`${name} vista previa`}
+			width="685"
+			height="360"
+			loading="lazy"
+			decoding="async"
+		/>
+	</picture>
+</article>
+
+<style>
+	.card {
+		display: flex;
+		flex-direction: column;
+		background-color: #202020;
+		color: #e1e1e1;
+		border: 1px solid var(--stroke);
+		border-radius: 12px;
+		overflow: hidden;
+	}
+
+	.info {
+		padding: clamp(1.875rem, 1.42rem + 1.942vw, 3.75rem);
+	}
+
+	.title {
+		font-size: 2rem;
+		padding-block-end: 8px;
+	}
+
+	.tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 4px 14px;
+		padding-block: 20px;
+	}
+
+	.links {
+		display: flex;
+		column-gap: 14px;
+	}
+
+	.picture {
+		margin-block-start: auto;
+		transform: translate(clamp(1.875rem, 1.42rem + 1.942vw, 3.75rem));
+	}
+
+	.image {
+		block-size: auto;
+	}
+</style>
