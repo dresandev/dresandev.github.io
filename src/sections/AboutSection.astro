@@ -1,8 +1,9 @@
 ---
 import Link from "~/components/Link.astro"
+import Section from "~/components/Section.astro"
 ---
 
-<section class="section">
+<Section>
 	<h2 class="title">Sobre mí</h2>
 
 	<p class="description">
@@ -10,20 +11,14 @@ import Link from "~/components/Link.astro"
 		Software. Hago desarrollo Fullstack, pero me encanta el desarrollo Front-end, que es en lo que
 		me especializo actualmente. Soy un defensor de los pequeños detalles y gran fan de CSS (¡El
 		mejor lenguaje de programación! 🙂). Actualmente, estoy profundizando mi conocimiento en el
-		ecosistema de React, pero a futuro quiero explorar otras alternativas para el desarrollo
-		Front-end, como Vue.js.
+		ecosistema de React, pero a futuro deseo a explorar otras alternativas para el desarrollo
+		Front-end, como Vue.js o svelte.
 	</p>
 
 	<Link class="download-cv-link" href="">Descargar Curriculum</Link>
-</section>
+</Section>
 
 <style>
-	.section {
-		padding-block: clamp(6.25rem, 5.492rem + 3.236vw, 9.375rem);
-		margin-inline: auto;
-		inline-size: fit-content;
-	}
-
 	.title {
 		text-align: center;
 	}
@@ -35,6 +30,6 @@ import Link from "~/components/Link.astro"
 
 	.description {
 		max-inline-size: 50ch;
-		padding-block: 50px 30px;
+		padding-block: 30px;
 	}
 </style>

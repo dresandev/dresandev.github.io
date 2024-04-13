@@ -21,7 +21,7 @@ export const projects: Project[] = [
         url: 'https://github.com/dresandev/dreflix',
       }
     ],
-    imageUrl: 'media/image/project.png'
+    imageUrl: 'media/images/projects/dreflix.png'
   },
   {
     name: 'Vexara',
@@ -43,6 +43,6 @@ export const projects: Project[] = [
         url: 'https://github.com/dresandev/vexara',
       }
     ],
-    imageUrl: 'media/image/project.png'
+    imageUrl: 'media/images/projects/vexara.png'
   },
 ]

@@ -1,0 +1,38 @@
+<div class="scroller">
+	<div class="scrollerInner">
+		<slot />
+	</div>
+</div>
+
+<style>
+	.scroller {
+		border-block: 0.1rem solid var(--border-color);
+		overflow-x: hidden;
+	}
+
+	.scrollerInner {
+		--column-gap: 1rem;
+		display: flex;
+		column-gap: var(--column-gap);
+		inline-size: max-content;
+		align-items: center;
+		font: clamp(4rem, 3.515rem + 1.294vw, 6rem) / normal var(--bebas-neue-font);
+		will-change: transform;
+		animation: scroll 25s linear infinite;
+	}
+
+	.item:nth-child(4n - 3) {
+		color: transparent;
+		-webkit-text-stroke: 0.1rem var(--text-color);
+	}
+
+	.title {
+		font: inherit;
+	}
+
+	@keyframes scroll {
+		to {
+			transform: translateX(calc(-50% - (var(--column-gap) / 2)));
+		}
+	}
+</style>

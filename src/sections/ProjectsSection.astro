@@ -1,34 +1,29 @@
 ---
 import { projects } from "~/data/projects"
 import ProjectCard from "~/components/ProjectCard.astro"
+import Section from "~/components/Section.astro"
 ---
 
-<section class="section">
+<Section>
 	<h2 class="title">Proyectos destacados</h2>
-	<div class="container">
+	<div class="projects-container">
 		{projects.map((project) => <ProjectCard class="projectCard" project={project} />)}
 	</div>
-</section>
+</Section>
 
 <style>
-	.section {
-		padding-block: 100px;
-	}
-
 	.title {
 		inline-size: min-content;
 		margin-inline: auto;
 		text-align: center;
 	}
 
-	.container {
+	.projects-container {
 		display: flex;
 		flex-wrap: wrap;
 		gap: 32px;
 		max-inline-size: 1236px;
-		inline-size: fit-content;
-		padding-block: 100px;
-		margin-inline: auto;
+		padding-block-start: 100px;
 	}
 
 	.projectCard {

@@ -18,13 +18,13 @@ const { name, description, links, tags, imageUrl } = project
 		<p>{description}</p>
 
 		<div class="tags">
-			{tags.map((tag) => <span style={{ color: tag.color }}>#{tag.label}</span>)}
+			{tags.map((tag) => <span class="tag">{tag}</span>)}
 		</div>
 
 		<div class="links">
 			{
 				links.map((link) => (
-					<Link href={link.url} target="_blank">
+					<Link showArrow href={link.url} target="_blank">
 						{link.label}
 					</Link>
 				))
@@ -46,14 +46,24 @@ const { name, description, links, tags, imageUrl } = project
 </article>
 
 <style>
+	html[data-theme="light"] .card {
+		--background-color: hsl(0, 0%, 82%);
+		--tag-color-hsl: 217 100% 22%;
+	}
+
+	html[data-theme="dark"] .card {
+		--background-color: hsl(0 0% 13%);
+		--tag-color-hsl: 200 75% 65%;
+	}
+
 	.card {
 		display: flex;
 		flex-direction: column;
-		background-color: #202020;
-		color: #e1e1e1;
+		background-color: var(--background-color);
 		border: 1px solid var(--stroke);
 		border-radius: 12px;
 		overflow: hidden;
+		transition: background-color 300ms;
 	}
 
 	.info {
@@ -68,8 +78,18 @@ const { name, description, links, tags, imageUrl } = project
 	.tags {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 4px 14px;
+		gap: 4px 8px;
 		padding-block: 20px;
+	}
+
+	.tag {
+		color: hsl(var(--tag-color-hsl));
+		background-color: hsl(var(--tag-color-hsl) / 0.2);
+		padding: 4px 10px;
+		border-radius: 30px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		transition: background-color 300ms;
 	}
 
 	.links {

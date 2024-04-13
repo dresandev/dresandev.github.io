@@ -1,8 +1,3 @@
-export interface Tag {
-  label: string
-  color: string
-}
-
 interface Link {
   label: string
   url: string
@@ -11,7 +6,7 @@ interface Link {
 export interface Project {
   name: string
   description: string
-  tags: Tag[]
+  tags: string[]
   links: Link[]
   imageUrl: string
 }
