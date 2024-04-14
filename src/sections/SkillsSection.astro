@@ -1,46 +1,64 @@
 ---
-import TextScroller from '~/components/TextScroller.astro';
+import TextScroller from "~/components/TextScroller.astro"
+
+const SKILLS = [
+	"Git",
+	"Typescript",
+	"Javascript",
+	"CSS",
+	"Tailwind CSS",
+	"ReactJS",
+	"NextJS",
+	"NodeJS",
+	"MongoDB",
+	"PostgreSQL",
+	"ExpressJS",
+]
 ---
 
-<section>
-  <TextScroller>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-    <span>askmd</span>
-  </TextScroller>
+<section class="section">
+	<h2 class="title">Tecnologías</h2>
+	<TextScroller class="text-scroller">
+		{SKILLS.map((skill) => <span>{skill}</span>)}
+	</TextScroller>
 </section>
+
+<style>
+	html[data-theme="light"] .section {
+		--surface: hsl(0, 0%, 88%);
+	}
+
+	html[data-theme="dark"] .section {
+		--surface: hsl(0, 0%, 6%);
+	}
+
+	.section {
+		padding-block: 160px;
+		margin-inline: calc(var(--inline-space) * -1);
+		background-color: var(--surface);
+		transition: background-color 300ms;
+	}
+
+	.title {
+		max-inline-size: 1236px;
+		padding-inline-start: var(--inline-space);
+		margin: 0 auto 30px;
+		font-size: 1rem;
+		font-weight: 500;
+		text-transform: uppercase;
+	}
+
+	.text-scroller {
+		padding-block: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+		border-block: 1px solid var(--stroke);
+		font-size: clamp(1.875rem, 1.602rem + 1.165vw, 3rem);
+		font-weight: 500;
+		line-height: normal;
+		transition: background-color 300ms;
+	}
+
+	.text-scroller:hover {
+		color: var(--brand-fill);
+		background-color: var(--text);
+	}
+</style>

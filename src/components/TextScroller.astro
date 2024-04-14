@@ -1,4 +1,12 @@
-<div class="scroller">
+---
+interface Props {
+	class?: string
+}
+
+const { class: className, ...props } = Astro.props
+---
+
+<div class:list={["scroller", className]} {...props}>
 	<div class="scrollerInner">
 		<slot />
 	</div>
@@ -6,28 +14,17 @@
 
 <style>
 	.scroller {
-		border-block: 0.1rem solid var(--border-color);
+		border-block: 1px solid var(--border-color);
 		overflow-x: hidden;
 	}
 
 	.scrollerInner {
-		--column-gap: 1rem;
+		--column-gap: 40px;
 		display: flex;
 		column-gap: var(--column-gap);
 		inline-size: max-content;
 		align-items: center;
-		font: clamp(4rem, 3.515rem + 1.294vw, 6rem) / normal var(--bebas-neue-font);
-		will-change: transform;
 		animation: scroll 25s linear infinite;
-	}
-
-	.item:nth-child(4n - 3) {
-		color: transparent;
-		-webkit-text-stroke: 0.1rem var(--text-color);
-	}
-
-	.title {
-		font: inherit;
 	}
 
 	@keyframes scroll {
