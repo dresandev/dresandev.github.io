@@ -16,7 +16,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 				<a class="nav-link" href="#sobre mí">Sobre mí</a>
 			</li>
 			<li>
-				<ContactButton class="contact-button" />
+				<ContactButton contentClass="contact-button-content" />
 			</li>
 		</ul>
 	</nav>
@@ -24,7 +24,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 	<ThemeToggle class="theme-toggle" />
 </div>
 
-<button aria-label="Abrir menú" class="menu-button">
+<button aria-label="Abrir menú" type="button" class="menu-button">
 	<span class="button-line"></span>
 	<span class="button-line"></span>
 </button>
@@ -56,7 +56,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 		display: none;
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 767px) {
 		.menu {
 			--header-block-size: 57px;
 			position: absolute;
@@ -66,34 +66,49 @@ import ThemeToggle from "./ThemeToggle.astro"
 			overflow-y: auto;
 			row-gap: 32px;
 			block-size: calc(100dvh - var(--header-block-size));
+			padding-block: 100px;
 			background-color: var(--surface);
 			visibility: hidden;
 			opacity: 0;
-			transform: translateX(100%);
 			transition:
 				visibility ease-in-out,
 				opacity ease-in-out,
-				transform ease-in-out,
 				background-color;
 			transition-duration: 300ms;
-		}
-
-		.nav {
-			margin: auto;
-			margin-block-end: 0;
 		}
 
 		.menu-active {
 			visibility: visible;
 			opacity: 1;
-			transform: translateX(0);
+		}
+
+		.nav {
+			margin-block-start: auto;
+		}
+
+		.nav-list {
+			flex-direction: column;
+			row-gap: 16px;
+		}
+
+		.nav-link {
+			font: 700 2.4rem var(--font-clash-display);
+		}
+
+		.contact-button-content {
+			padding: 10px 24px;
+			font-size: 1.1rem;
+		}
+
+		.theme-toggle {
+			margin-block-end: auto;
 		}
 
 		.menu-button {
 			--size: 32px;
 			display: flex;
 			flex-direction: column;
-			gap: 8px;
+			row-gap: 8px;
 			justify-content: center;
 			align-items: center;
 			inline-size: var(--size);
@@ -116,24 +131,6 @@ import ThemeToggle from "./ThemeToggle.astro"
 		.button-active > .button-line:nth-child(2) {
 			transform: rotateZ(-45deg) translate(2px);
 		}
-
-		.nav-list {
-			flex-direction: column;
-			row-gap: 16px;
-		}
-
-		.nav-link {
-			font: 700 2.4rem var(--font-clash-display);
-		}
-
-		.contact-button {
-			font-size: 1.2rem;
-			padding: 10px 24px;
-		}
-
-		.theme-toggle {
-			margin-block-end: auto;
-		}
 	}
 
 	@media (hover: hover) {
@@ -143,7 +140,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 		}
 
 		.nav-link:hover {
-			color: initial;
+			color: var(--text-hsl);
 		}
 	}
 </style>

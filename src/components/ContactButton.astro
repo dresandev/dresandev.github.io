@@ -1,86 +1,81 @@
 ---
-interface Props extends astroHTML.JSX.ButtonHTMLAttributes {}
+interface Props {
+	contentClass?: string
+}
 
-const { class: className, ...props } = Astro.props
+const { contentClass, ...props } = Astro.props
 ---
 
-<button class:list={["button", className]} {...props}>Contactar</button>
+<button class="button">
+	<span class:list={["content", contentClass]} {...props}>Contactar</span>
+</button>
 
 <style>
+	html[data-theme="dark"] .button::before {
+		--gradient: linear-gradient(
+			115deg,
+			hsl(135, 57%, 56%),
+			var(--brand-fill),
+			hsl(270, 71%, 65%),
+			hsl(313, 100%, 50%),
+			hsl(197, 99%, 53%),
+			hsl(144, 58%, 54%)
+		);
+	}
+
+	html[data-theme="light"] .button::before {
+		--gradient: linear-gradient(
+			115deg,
+			hsl(135, 100%, 30%),
+			var(--brand-fill),
+			hsl(270, 100%, 31%),
+			hsl(313, 100%, 50%),
+			hsl(197, 100%, 32%),
+			hsl(144, 100%, 31%)
+		);
+	}
+
 	.button {
-		--border-radius: 5px;
 		position: relative;
-		padding: 8px 20px;
+		padding: 1.5px;
 		font-weight: 500;
-		background-color: var(--surface);
-		border-radius: var(--border-radius);
-		border: 1px solid var(--stroke);
-		transition-property: background-color, border-color;
-		transition-duration: 300ms;
+		border-radius: 4px;
+		overflow: hidden;
 	}
 
-	.button:hover {
-		border-color: transparent;
+	.button:active {
+		transform: scale(0.98);
 	}
 
-	.button:before {
-		--size: calc(100% + 4px);
+	.button::before {
 		content: "";
 		position: absolute;
-		inset-block-start: -2px;
-		inset-inline-start: -2px;
-		z-index: -1;
-		block-size: var(--size);
-		inline-size: var(--size);
-		background-size: 400%;
-		border-radius: var(--border-radius);
-		opacity: 0;
-		transition: opacity 300ms;
-		animation: gradient-movement 20s linear infinite;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 400%;
+		block-size: 100%;
+		background-image: var(--gradient);
+		background-size: 50%;
+		animation: move-bg 2s linear infinite;
+		animation-play-state: paused;
 	}
 
-	html[data-theme="dark"] .button:before {
-		background-image: linear-gradient(
-			45deg,
-			var(--brand-fill),
-			hsl(27, 100%, 50%),
-			var(--brand-fill),
-			hsl(103, 100%, 50%),
-			hsl(170, 100%, 50%),
-			hsl(0, 90%, 55%),
-			hsl(269, 100%, 50%),
-			hsl(313, 100%, 50%),
-			var(--brand-fill)
-		);
+	.button:hover::before {
+		animation-play-state: running;
 	}
 
-	html[data-theme="light"] .button:before {
-		background-image: linear-gradient(
-			45deg,
-			var(--brand-fill),
-			hsl(37, 75%, 58%),
-			var(--brand-fill),
-			hsl(118, 81%, 29%),
-			hsl(219, 98%, 39%),
-			hsl(0, 100%, 55%),
-			hsl(261, 55%, 61%),
-			hsl(336, 82%, 57%),
-			var(--brand-fill)
-		);
+	.content {
+		position: relative;
+		display: inline-block;
+		padding: 8px 20px;
+		background-color: var(--surface);
+		border-radius: 4px;
+		transition: background-color 300ms;
 	}
 
-	.button:hover:before {
-		opacity: 1;
-	}
-
-	@keyframes gradient-movement {
-		from,
+	@keyframes move-bg {
 		to {
-			background-position-x: 0;
-		}
-
-		50% {
-			background-position-x: 400%;
+			transform: translateX(-50%);
 		}
 	}
 </style>

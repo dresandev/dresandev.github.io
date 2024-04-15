@@ -5,10 +5,13 @@ import Header from "~/components/Header.astro"
 
 interface Props {
 	title: string
-	description: string
+	description?: string
 }
 
-const { title, description } = Astro.props
+const {
+	title,
+	description = "Portafolio como desarrollador Front-end donde puedes encontrar mis proyectos, habilidades e información de contacto. Explora mi trabajo y contáctame si tienes un proyecto en mente.",
+} = Astro.props
 ---
 
 <!doctype html>

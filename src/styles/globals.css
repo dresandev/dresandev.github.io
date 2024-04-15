@@ -18,6 +18,7 @@
 	--ease-3: cubic-bezier(0.25, 0, 0.3, 1);
 	--ease-out-5: cubic-bezier(0, 0, 0, 1);
 	--inline-space: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+	--inverted-wrapper-margin: -61px;
 	--font-dm-san: "DM Sans", sans-serif;
 	--font-clash-display: "Clash Display";
 
@@ -80,7 +81,7 @@
 	border-radius: 1px;
 }
 
-html {
+html:has(.hide-overflow) {
 	scrollbar-gutter: stable;
 }
 
@@ -108,6 +109,8 @@ h2 {
 	font-size: clamp(2.5rem, 2.136rem + 1.553vw, 4rem);
 }
 
-.hide-overflow {
-	overflow-y: hidden;
+@media screen and (max-width: 768px) {
+	.hide-overflow {
+		overflow-y: hidden;
+	}
 }

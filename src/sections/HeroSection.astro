@@ -30,11 +30,11 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 		display: flex;
 		align-items: center;
 		min-block-size: 100dvh;
+		margin-block-start: var(--inverted-wrapper-margin);
 	}
 
 	.title {
 		inline-size: 100%;
-		padding-block: 200px;
 		font-size: clamp(2.75rem, 1.279rem + 6.861vw, 9.375rem);
 	}
 
@@ -70,11 +70,16 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 	.bottom-area {
 		position: absolute;
-		inset-block-end: 40px;
-		inset-inline-start: var(--inline-space);
+		inset-block-end: 24px;
 		display: flex;
 		align-items: center;
 		font-size: 1.125rem;
+	}
+
+	@media screen and (max-width: 768px) {
+		.title {
+			padding-block: 150px;
+		}
 	}
 
 	@media screen and (min-width: 425px) {
