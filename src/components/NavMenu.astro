@@ -68,16 +68,19 @@ import ThemeToggle from "./ThemeToggle.astro"
 			block-size: calc(100dvh - var(--header-block-size));
 			padding-block: 100px;
 			background-color: var(--surface);
+			transform: translateY(-100%);
 			visibility: hidden;
 			opacity: 0;
 			transition:
 				visibility ease-in-out,
 				opacity ease-in-out,
+				transform ease-in-out,
 				background-color;
 			transition-duration: 300ms;
 		}
 
 		.menu-active {
+			transform: translateY(0);
 			visibility: visible;
 			opacity: 1;
 		}

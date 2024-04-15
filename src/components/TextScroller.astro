@@ -7,7 +7,7 @@ const { class: className, ...props } = Astro.props
 ---
 
 <div class:list={["scroller", className]} {...props}>
-	<div class="scrollerInner">
+	<div id="scroller-inner" class="scrollerInner">
 		<slot />
 	</div>
 </div>
@@ -27,9 +27,25 @@ const { class: className, ...props } = Astro.props
 		animation: scroll 25s linear infinite;
 	}
 
+	.scroller:hover > .scrollerInner {
+		animation-play-state: paused;
+	}
+
 	@keyframes scroll {
 		to {
 			transform: translateX(calc(-50% - (var(--column-gap) / 2)));
 		}
 	}
 </style>
+
+<script>
+	const scrollerInner = document.querySelector("#scroller-inner")!
+
+	const children = Array.from(scrollerInner.children) as HTMLElement[]
+
+	children.forEach((child) => {
+		const clonedChild = child.cloneNode(true) as HTMLElement
+		clonedChild.setAttribute("aria-hidden", "true")
+		scrollerInner.appendChild(clonedChild)
+	})
+</script>
