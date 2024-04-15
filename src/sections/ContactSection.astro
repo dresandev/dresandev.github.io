@@ -1,0 +1,71 @@
+<section class="section">
+	<h2 class="title">
+		<span class="word">¿Quieres iniciar</span>
+		<span class="word">un proyecto?</span>
+	</h2>
+
+	<div class="email-wrapper">
+		<div id="email-toast" class="toast">¡Espero saber pronto de ti!</div>
+		<button id="copy-email-button" class="email-button" type="button">dresan.dev@gmail.com</button>
+		<p class="help-message">Click para copiar</p>
+	</div>
+</section>
+
+<style>
+	.section {
+		padding-block: clamp(5rem, 4.697rem + 1.294vw, 6.25rem);
+	}
+
+	.title {
+		display: flex;
+		flex-direction: column;
+		font-size: clamp(2.5rem, 0.68rem + 7.767vw, 10rem);
+	}
+
+	.word:nth-child(2) {
+		align-self: flex-end;
+	}
+
+	.toast {
+		padding: 8px 10px;
+		background-color: var(--text);
+		color: var(--surface);
+		inline-size: fit-content;
+		border-radius: 4px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		opacity: 0;
+		transform: translateY(1.25rem);
+		transition-property: opacity, transform;
+		transition-duration: 500ms;
+	}
+
+	.enter-toast {
+		opacity: 1;
+		transform: translateY(-1.25rem);
+	}
+
+	.email-wrapper {
+		position: relative;
+		padding-block: 64px;
+	}
+
+	.email-button {
+		font-size: clamp(1.25rem, 0.825rem + 1.812vw, 3rem);
+		text-decoration: underline;
+	}
+
+	.help-message {
+		font-size: 0.875rem;
+		color: hsl(var(--text-hsl) / 0.7);
+	}
+</style>
+
+<script>
+	const copyEmailButton = document.querySelector("#copy-email-button")!
+	const emailToast = document.querySelector("#email-toast")!
+
+	copyEmailButton.addEventListener("click", () => {
+		emailToast.classList.toggle("enter-toast")
+	})
+</script>
