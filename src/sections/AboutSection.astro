@@ -1,24 +1,29 @@
 ---
 import Link from "~/components/Link.astro"
-import Section from "~/components/Section.astro"
 ---
 
-<Section>
+<section id="sobre-mí" class="section">
 	<h2 class="title">Sobre mí</h2>
 
 	<p class="description">
-		Hola 👋🏻, Mi nombre es Javier Andrés, pero tú puedes decirme Dresan, Desarrollador de
-		Software. Hago desarrollo Fullstack, pero me encanta el desarrollo Front-end, que es en lo que
-		me especializo actualmente. Soy un defensor de los pequeños detalles y gran fan de CSS (¡El
-		mejor lenguaje de programación! 🙂). Actualmente, estoy profundizando mi conocimiento en el
-		ecosistema de React, pero a futuro deseo explorar otras alternativas para el desarrollo
-		Front-end, como Vue.js o svelte.
+		Hola 👋🏻, Mi nombre es Javier Andrés, pero tú puedes decirme Dresan, Desarrollador de Software.
+		Hago desarrollo Fullstack, pero me encanta el desarrollo Front-end, que es en lo que me
+		especializo actualmente. Soy un defensor de los pequeños detalles y gran fan de CSS (¡El mejor
+		lenguaje de programación! 🙂). Actualmente, estoy profundizando mi conocimiento en el ecosistema
+		de React, pero a futuro deseo explorar otras alternativas para el desarrollo Front-end, como
+		Vue.js o Svelte.
 	</p>
 
 	<Link class="download-cv-link" href="">Descargar Curriculum</Link>
-</Section>
+</section>
 
 <style>
+	.section {
+		padding-block: var(--section-padding-block);
+		margin-inline: auto;
+		inline-size: fit-content;
+	}
+
 	.title {
 		text-align: center;
 	}

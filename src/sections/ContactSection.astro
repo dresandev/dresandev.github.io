@@ -26,7 +26,14 @@
 		align-self: flex-end;
 	}
 
+	.email-wrapper {
+		position: relative;
+		padding-block: 64px;
+	}
+
 	.toast {
+		position: absolute;
+		z-index: -1;
 		padding: 8px 10px;
 		background-color: var(--text);
 		color: var(--surface);
@@ -37,21 +44,16 @@
 		opacity: 0;
 		transform: translateY(1.25rem);
 		transition-property: opacity, transform;
-		transition-duration: 500ms;
+		transition-duration: 400ms;
 	}
 
 	.enter-toast {
 		opacity: 1;
-		transform: translateY(-1.25rem);
-	}
-
-	.email-wrapper {
-		position: relative;
-		padding-block: 64px;
+		transform: translateY(-2.5rem);
 	}
 
 	.email-button {
-		font-size: clamp(1.25rem, 0.825rem + 1.812vw, 3rem);
+		font-size: clamp(1.563rem, 0.125rem + 4.6vi, 3rem);
 		text-decoration: underline;
 	}
 
@@ -64,8 +66,19 @@
 <script>
 	const copyEmailButton = document.querySelector("#copy-email-button")!
 	const emailToast = document.querySelector("#email-toast")!
+	const email = copyEmailButton.textContent!
+	let toastActive = false
 
-	copyEmailButton.addEventListener("click", () => {
-		emailToast.classList.toggle("enter-toast")
+	copyEmailButton.addEventListener("click", async () => {
+		if (toastActive) return
+
+		await navigator.clipboard.writeText(email)
+		emailToast.classList.add("enter-toast")
+		toastActive = true
+
+		setTimeout(() => {
+			emailToast.classList.remove("enter-toast")
+			toastActive = false
+		}, 5000)
 	})
 </script>

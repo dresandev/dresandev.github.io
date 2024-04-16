@@ -1,0 +1,51 @@
+---
+import Link from "./Link.astro"
+
+const LINKS = [
+	{
+		label: "Email",
+		url: "mailto:dresan.dev@gmail.com",
+	},
+	{
+		label: "LinkedIn",
+		url: "https://www.linkedin.com/in/dresandev/",
+	},
+	{
+		label: "GitHub",
+		url: "https://github.com/dresandev",
+	},
+	{
+		label: "CodePen",
+		url: "https://codepen.io/dresandev",
+	},
+]
+---
+
+<footer class="footer">
+	<div>ʕっ•ᴥ•ʔっ - 2024</div>
+
+	<div class="links">
+		{
+			LINKS.map(({ label, url }) => (
+				<Link href={url} target="_blank">
+					{label}
+				</Link>
+			))
+		}
+	</div>
+</footer>
+
+<style>
+	.footer,
+	.links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 20px;
+	}
+
+	.footer {
+		justify-content: space-between;
+		padding-block-end: 20px;
+		font-size: clamp(1.25rem, 1.098rem + 0.647vw, 1.875rem);
+	}
+</style>

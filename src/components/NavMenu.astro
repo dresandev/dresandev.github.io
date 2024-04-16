@@ -30,15 +30,17 @@ import ThemeToggle from "./ThemeToggle.astro"
 </button>
 
 <style>
-	.menu {
+	.menu,
+	.nav-list {
 		display: flex;
 		align-items: center;
+	}
+
+	.menu {
 		column-gap: 20px;
 	}
 
 	.nav-list {
-		display: flex;
-		align-items: center;
 		column-gap: 16px;
 		padding-inline-start: 0;
 	}
@@ -60,6 +62,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 		.menu {
 			--header-block-size: 57px;
 			position: absolute;
+			z-index: -1;
 			inset-inline: 0;
 			inset-block-start: var(--header-block-size);
 			flex-direction: column;
@@ -68,19 +71,13 @@ import ThemeToggle from "./ThemeToggle.astro"
 			block-size: calc(100dvh - var(--header-block-size));
 			padding-block: 100px;
 			background-color: var(--surface);
-			transform: translateY(-100%);
 			visibility: hidden;
 			opacity: 0;
-			transition:
-				visibility ease-in-out,
-				opacity ease-in-out,
-				transform ease-in-out,
-				background-color;
+			transition: visibility, opacity, background-color;
 			transition-duration: 300ms;
 		}
 
 		.menu-active {
-			transform: translateY(0);
 			visibility: visible;
 			opacity: 1;
 		}
