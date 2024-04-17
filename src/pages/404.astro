@@ -1,9 +1,9 @@
 ---
 import DresanAnimalogo from "~/components/SVG/DresanAnimalogo.astro"
-import NoFooterLayout from "~/layouts/NoFooterLayout.astro"
+import Layout from "~/layouts/Layout.astro"
 ---
 
-<NoFooterLayout title="404 — Página no encontrada">
+<Layout title="404 — Página no encontrada" showFooter={false}>
 	<DresanAnimalogo class="animalogo" />
 
 	<div class="wrapper">
@@ -12,26 +12,12 @@ import NoFooterLayout from "~/layouts/NoFooterLayout.astro"
 
 		<a class="link" href="/">Volver al inicio</a>
 	</div>
-</NoFooterLayout>
+</Layout>
+
+<!-- 250 24 18 -->
+<!-- 150 20 16 -->
 
 <style>
-	.wrapper {
-		display: grid;
-		justify-items: center;
-		align-content: center;
-		min-block-size: 100dvh;
-		margin-block-start: var(--inverted-wrapper-margin);
-	}
-
-	.title {
-		font-size: clamp(9.375rem, 6.341rem + 12.945vw, 21.875rem);
-		line-height: 1;
-	}
-
-	.description {
-		font-size: clamp(1.25rem, 1.068rem + 0.777vw, 2rem);
-	}
-
 	.animalogo {
 		position: fixed;
 		inset-inline-end: 0;
@@ -44,15 +30,34 @@ import NoFooterLayout from "~/layouts/NoFooterLayout.astro"
 		transform: translateX(50%);
 	}
 
+	.wrapper {
+		display: grid;
+		justify-items: center;
+		align-content: center;
+		min-block-size: 100dvh;
+	}
+
+	.title {
+		font-size: clamp(9.375rem, 7.858rem + 6.472vw, 15.625rem);
+		line-height: 1;
+	}
+
+	.description {
+		font-size: clamp(1.25rem, 1.189rem + 0.259vw, 1.5rem);
+	}
+
 	.link {
 		padding: 12px 20px;
 		margin-block-start: 12px;
 		background-color: var(--text);
 		color: var(--surface);
-		border-radius: 8px;
-		font-size: clamp(1rem, 0.879rem + 0.518vw, 1.5rem);
+		border-radius: 4px;
+		font-size: clamp(1rem, 0.97rem + 0.129vw, 1.125rem);
 		font-weight: 500;
-		transition: opacity 150ms;
+		transition:
+			opacity 300ms,
+			color 300ms,
+			background-color 300ms;
 	}
 
 	.link:hover {

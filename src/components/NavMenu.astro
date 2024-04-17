@@ -1,5 +1,5 @@
 ---
-import ContactButton from "./ContactButton.astro"
+import ContactModal from "./ContactButton.astro"
 import ThemeToggle from "./ThemeToggle.astro"
 ---
 
@@ -16,7 +16,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 				<a class="nav-link" href="#sobre-mí">Sobre mí</a>
 			</li>
 			<li>
-				<ContactButton contentClass="contact-button-content" />
+				<ContactModal contentClass="contact-button-content" />
 			</li>
 		</ul>
 	</nav>
@@ -73,13 +73,19 @@ import ThemeToggle from "./ThemeToggle.astro"
 			background-color: var(--surface);
 			visibility: hidden;
 			opacity: 0;
-			transition: visibility, opacity, background-color;
+			transform: translateX(100%);
+			transition:
+				visibility cubic-bezier(0.4, 0, 0.2, 1),
+				opacity cubic-bezier(0.4, 0, 0.2, 1),
+				transform cubic-bezier(0.4, 0, 0.2, 1),
+				background-color;
 			transition-duration: 300ms;
 		}
 
 		.menu-active {
 			visibility: visible;
 			opacity: 1;
+			transform: translateX(0);
 		}
 
 		.nav {
@@ -152,6 +158,6 @@ import ThemeToggle from "./ThemeToggle.astro"
 	menuButton.addEventListener("click", () => {
 		menu.classList.toggle("menu-active")
 		menuButton.classList.toggle("button-active")
-		document.body.classList.toggle("hide-overflow")
+		document.body.classList.toggle("menu-hide-overflow")
 	})
 </script>

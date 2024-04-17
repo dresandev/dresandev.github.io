@@ -6,7 +6,7 @@ interface Props {
 const { contentClass, ...props } = Astro.props
 ---
 
-<button class="button">
+<button id="contact-button" class="button">
 	<span class:list={["content", contentClass]} {...props}>Contactar</span>
 </button>
 
@@ -79,3 +79,14 @@ const { contentClass, ...props } = Astro.props
 		}
 	}
 </style>
+
+<script>
+	const contactModal = document.querySelector("#contact-modal")! as HTMLElement
+	const contactButton = document.querySelector("#contact-button")! as HTMLButtonElement
+
+	contactButton.addEventListener("click", () => {
+		contactModal.classList.add("open")
+		document.body.classList.add("hide-overflow")
+		setTimeout(() => contactModal.focus(), 300)
+	})
+</script>

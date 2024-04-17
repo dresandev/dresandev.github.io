@@ -6,7 +6,6 @@
 	--ease-3: cubic-bezier(0.25, 0, 0.3, 1);
 	--ease-out-5: cubic-bezier(0, 0, 0, 1);
 	--inline-space: clamp(1rem, 0.757rem + 1.036vw, 2rem);
-	--inverted-wrapper-margin: -61px;
 	--section-padding-block: clamp(5rem, 3.938rem + 4.531vw, 9.375rem);
 	--font-dm-san: "DM Sans", sans-serif;
 	--font-clash-display: "Clash Display";
@@ -23,7 +22,8 @@
 	--surface: hsl(0 0% 93%);
 	--text: hsl(0 0% 7%);
 	--stroke: hsl(0 0% 26%);
-	--scrollbar-thumb-color: hsl(0, 0%, 38%);
+	--focus-color: hsl(245deg 100% 60%);
+	--scrollbar-thumb-color: hsl(0 0% 38%);
 
 	color-scheme: light;
 }
@@ -34,10 +34,11 @@
 	--stroke-hsl: 0 0% 26%;
 
 	--surface: hsl(0 0% 7%);
-	--text: hsl(0, 0%, 93%);
+	--text: hsl(0 0% 93%);
 	--stroke: hsl(0 0% 26%);
-	--scrollbar-thumb-color: hsl(0, 0%, 67%);
-	--scrollbar-thumb-hover-color: hsl(0, 0%, 44%);
+	--focus-color: hsl(228 100% 69%);
+	--scrollbar-thumb-color: hsl(0 0% 67%);
+	--scrollbar-thumb-hover-color: hsl(0 0% 44%);
 
 	color-scheme: dark;
 }
@@ -102,8 +103,12 @@ h2 {
 	font-size: clamp(2.5rem, 2.136rem + 1.553vw, 4rem);
 }
 
+.hide-overflow {
+	overflow-y: hidden;
+}
+
 @media screen and (max-width: 768px) {
-	.hide-overflow {
+	.menu-hide-overflow {
 		overflow-y: hidden;
 	}
 }

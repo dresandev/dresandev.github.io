@@ -14,13 +14,13 @@ import NavMenu from "./NavMenu.astro"
 <style>
 	.header {
 		position: sticky;
-		inset-block-start: 0;
+		inset: 0;
+		inset-block-end: unset;
 		z-index: 10;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		padding: 12px 24px;
-		margin-inline: calc(var(--inline-space) * -1);
 		border-block-end: 1px solid var(--stroke);
 		background-color: hsl(var(--surface-hsl) / 0.8);
 		backdrop-filter: blur(12px);
@@ -29,7 +29,7 @@ import NavMenu from "./NavMenu.astro"
 
 	@media screen and (min-width: 768px) {
 		.header {
-			inset-inline: 0;
+			position: fixed;
 			inset-block-start: 24px;
 			column-gap: 20px;
 			inline-size: fit-content;

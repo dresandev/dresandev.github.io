@@ -1,0 +1,146 @@
+---
+import CloseIcon from "./SVG/CloseIcon.astro"
+---
+
+<div id="contact-modal" class="modal" tabindex="0">
+	<div class="card">
+		<div class="header">
+			<h3 class="title">Contactar</h3>
+			<button id="close-contact-modal" class="close-button" type="button">
+				<CloseIcon />
+			</button>
+		</div>
+		<form class="form" action="https://formspree.io/f/xoqoayzk" method="post">
+			<div class="input-wrapper">
+				<label class="label" for="name-input">Nombre</label>
+				<input class="input" id="name-input" type="text" name="name" autocomplete="name" />
+				<div class="border"></div>
+			</div>
+			<div class="input-wrapper">
+				<label class="label" for="email-input">Email</label>
+				<input
+					class="input"
+					id="email-input"
+					type="text"
+					name="email"
+					required
+					autocomplete="email"
+				/>
+				<div class="border"></div>
+			</div>
+			<div class="input-wrapper">
+				<label class="label" for="message-textarea">Mensaje</label>
+				<textarea class="textarea" id="message-textarea" name="message" required></textarea>
+				<div class="border"></div>
+			</div>
+			<button class="submit" type="submit">Enviar</button>
+		</form>
+	</div>
+</div>
+
+<style>
+	.modal {
+		position: fixed;
+		z-index: 10;
+		inset: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: hsl(var(--surface-hsl) / 0.5);
+		backdrop-filter: blur(4px);
+		visibility: hidden;
+		opacity: 0;
+		transition:
+			visibility 300ms,
+			opacity 300ms;
+	}
+
+	.modal.open {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.card {
+		max-inline-size: 600px;
+		inline-size: 100%;
+		padding: 30px;
+		border: 2px solid var(--stroke);
+		border-radius: 8px;
+		background-color: var(--surface);
+	}
+
+	.header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding-block-end: 32px;
+	}
+
+	.title {
+		font-size: 30px;
+	}
+
+	.form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 32px;
+	}
+
+	.input-wrapper:focus-within {
+		color: var(--focus-color);
+	}
+
+	.label {
+		font-weight: 500;
+		display: block;
+		transition: color 300ms;
+	}
+
+	.input,
+	.textarea {
+		inline-size: 100%;
+		background-color: unset;
+		border: none;
+		outline: none;
+	}
+
+	.input {
+		padding: 12px 0;
+	}
+
+	.textarea {
+		block-size: 150px;
+		resize: none;
+	}
+
+	.border {
+		block-size: 2px;
+		background-color: currentColor;
+		border-radius: 2px;
+		transition-property: color, transform;
+		transition-duration: 300ms;
+	}
+
+	.submit {
+		padding-block: 12px;
+		border-radius: 4px;
+		background-color: var(--text);
+		color: var(--surface);
+		font-weight: 500;
+		transition: opacity 300ms;
+	}
+
+	.submit:hover {
+		opacity: 0.75;
+	}
+</style>
+
+<script>
+	const contactModal = document.querySelector("#contact-modal")!
+	const closeContactModal = document.querySelector("#close-contact-modal")!
+
+	closeContactModal.addEventListener("click", () => {
+		contactModal.classList.remove("open")
+		document.body.classList.remove("hide-overflow")
+	})
+</script>
