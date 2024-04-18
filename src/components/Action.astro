@@ -1,0 +1,27 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types"
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }>
+
+const { as: Tag, class: className, ...props } = Astro.props
+---
+
+<Tag class:list={[className, "action"]} {...props}>
+	<slot />
+</Tag>
+
+<style>
+	.action {
+		padding: 12px 20px;
+		background-color: var(--text);
+		color: var(--surface);
+		border-radius: 4px;
+		font-weight: 500;
+		transition-property: inherit, opacity;
+		transition-duration: 300ms;
+	}
+
+	.action:hover {
+		opacity: 0.75;
+	}
+</style>

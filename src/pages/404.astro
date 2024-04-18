@@ -1,4 +1,5 @@
 ---
+import Action from "~/components/Action.astro"
 import DresanAnimalogo from "~/components/SVG/DresanAnimalogo.astro"
 import Layout from "~/layouts/Layout.astro"
 ---
@@ -10,12 +11,9 @@ import Layout from "~/layouts/Layout.astro"
 		<h1 class="title">404</h1>
 		<p class="description">No se encontró la página 🫥</p>
 
-		<a class="link" href="/">Volver al inicio</a>
+		<Action class="go-home-link" as="a" href="/">Volver al inicio</Action>
 	</div>
 </Layout>
-
-<!-- 250 24 18 -->
-<!-- 150 20 16 -->
 
 <style>
 	.animalogo {
@@ -46,22 +44,9 @@ import Layout from "~/layouts/Layout.astro"
 		font-size: clamp(1.25rem, 1.189rem + 0.259vw, 1.5rem);
 	}
 
-	.link {
-		padding: 12px 20px;
+	.go-home-link {
 		margin-block-start: 12px;
-		background-color: var(--text);
-		color: var(--surface);
-		border-radius: 4px;
 		font-size: clamp(1rem, 0.97rem + 0.129vw, 1.125rem);
-		font-weight: 500;
-		transition:
-			opacity 300ms,
-			color 300ms,
-			background-color 300ms;
-	}
-
-	.link:hover {
-		opacity: 0.75;
 	}
 
 	@media screen and (max-width: 768px) {

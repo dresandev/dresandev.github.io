@@ -64,8 +64,10 @@
 </style>
 
 <script>
-	const copyEmailButton = document.querySelector("#copy-email-button")!
-	const emailToast = document.querySelector("#email-toast")!
+	import { $ } from "~/utils"
+
+	const copyEmailButton = $("#copy-email-button")!
+	const emailToast = $("#email-toast")!
 	const email = copyEmailButton.textContent!
 	let toastActive = false
 

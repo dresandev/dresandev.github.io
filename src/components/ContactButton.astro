@@ -81,12 +81,14 @@ const { contentClass, ...props } = Astro.props
 </style>
 
 <script>
-	const contactModal = document.querySelector("#contact-modal")! as HTMLElement
-	const contactButton = document.querySelector("#contact-button")! as HTMLButtonElement
+	import { $ } from "~/utils"
+
+	const contactModal = $("#contact-modal")!
+	const contactButton = $("#contact-button")!
 
 	contactButton.addEventListener("click", () => {
 		contactModal.classList.add("open")
 		document.body.classList.add("hide-overflow")
-		setTimeout(() => contactModal.focus(), 300)
+		contactModal.focus()
 	})
 </script>

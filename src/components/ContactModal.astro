@@ -1,5 +1,6 @@
 ---
-import CloseIcon from "./SVG/CloseIcon.astro"
+import Action from "~/components/Action.astro"
+import CloseIcon from "~/components/SVG/CloseIcon.astro"
 ---
 
 <div id="contact-modal" class="modal" tabindex="0">
@@ -10,10 +11,10 @@ import CloseIcon from "./SVG/CloseIcon.astro"
 				<CloseIcon />
 			</button>
 		</div>
-		<form class="form" action="https://formspree.io/f/xoqoayzk" method="post">
+		<form class="form" action=`https://formspree.io/f/xoqoayzk` method="post">
 			<div class="input-wrapper">
 				<label class="label" for="name-input">Nombre</label>
-				<input class="input" id="name-input" type="text" name="name" autocomplete="name" />
+				<input class="input" id="name-input" type="text" name="name" required autocomplete="name" />
 				<div class="border"></div>
 			</div>
 			<div class="input-wrapper">
@@ -33,7 +34,7 @@ import CloseIcon from "./SVG/CloseIcon.astro"
 				<textarea class="textarea" id="message-textarea" name="message" required></textarea>
 				<div class="border"></div>
 			</div>
-			<button class="submit" type="submit">Enviar</button>
+			<Action as="button" type="submit">Enviar</Action>
 		</form>
 	</div>
 </div>
@@ -43,27 +44,24 @@ import CloseIcon from "./SVG/CloseIcon.astro"
 		position: fixed;
 		z-index: 10;
 		inset: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		display: none;
+		padding-block: 57px;
 		background-color: hsl(var(--surface-hsl) / 0.5);
 		backdrop-filter: blur(4px);
-		visibility: hidden;
-		opacity: 0;
-		transition:
-			visibility 300ms,
-			opacity 300ms;
+		overflow-y: auto;
+		scrollbar-width: thin;
 	}
 
 	.modal.open {
-		visibility: visible;
-		opacity: 1;
+		display: flex;
+		animation: fade-in 300ms;
 	}
 
 	.card {
 		max-inline-size: 600px;
 		inline-size: 100%;
 		padding: 30px;
+		margin: auto;
 		border: 2px solid var(--stroke);
 		border-radius: 8px;
 		background-color: var(--surface);
@@ -121,23 +119,22 @@ import CloseIcon from "./SVG/CloseIcon.astro"
 		transition-duration: 300ms;
 	}
 
-	.submit {
-		padding-block: 12px;
-		border-radius: 4px;
-		background-color: var(--text);
-		color: var(--surface);
-		font-weight: 500;
-		transition: opacity 300ms;
-	}
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
 
-	.submit:hover {
-		opacity: 0.75;
+		to {
+			opacity: 1;
+		}
 	}
 </style>
 
 <script>
-	const contactModal = document.querySelector("#contact-modal")!
-	const closeContactModal = document.querySelector("#close-contact-modal")!
+	import { $ } from "~/utils"
+
+	const contactModal = $("#contact-modal")!
+	const closeContactModal = $("#close-contact-modal")!
 
 	closeContactModal.addEventListener("click", () => {
 		contactModal.classList.remove("open")

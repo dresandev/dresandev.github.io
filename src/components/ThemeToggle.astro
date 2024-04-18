@@ -125,7 +125,9 @@ const { class: className, ...props } = Astro.props
 </style>
 
 <script>
-	const themeToggle = document.querySelector("#theme-toggle")!
+	import { $ } from "~/utils"
+
+	const themeToggle = $("#theme-toggle")!
 	const storageKey = "theme-preference"
 
 	const getTheme = () => {

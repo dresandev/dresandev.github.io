@@ -1,20 +1,35 @@
 ---
-import ContactModal from "./ContactButton.astro"
-import ThemeToggle from "./ThemeToggle.astro"
+import ContactModal from "~/components/ContactButton.astro"
+import ThemeToggle from "~/components/ThemeToggle.astro"
+
+const LINKS = [
+	{
+		label: "Inicio",
+		url: "#inicio",
+	},
+	{
+		label: "Proyectos",
+		url: "#proyectos",
+	},
+	{
+		label: "Sobre mí",
+		url: "#sobre-mí",
+	},
+]
 ---
 
 <div class="menu">
 	<nav class="nav">
 		<ul class="nav-list">
-			<li>
-				<a class="nav-link" href="#inicio">Inicio</a>
-			</li>
-			<li>
-				<a class="nav-link" href="#proyectos">Proyectos</a>
-			</li>
-			<li>
-				<a class="nav-link" href="#sobre-mí">Sobre mí</a>
-			</li>
+			{
+				LINKS.map(({ label, url }) => (
+					<li>
+						<a class="nav-link" href={url}>
+							{label}
+						</a>
+					</li>
+				))
+			}
 			<li>
 				<ContactModal contentClass="contact-button-content" />
 			</li>
@@ -42,11 +57,6 @@ import ThemeToggle from "./ThemeToggle.astro"
 
 	.nav-list {
 		column-gap: 16px;
-		padding-inline-start: 0;
-	}
-
-	.nav-list li {
-		list-style: none;
 	}
 
 	.nav-link {
@@ -60,17 +70,15 @@ import ThemeToggle from "./ThemeToggle.astro"
 
 	@media screen and (max-width: 767px) {
 		.menu {
-			--header-block-size: 57px;
-			position: absolute;
-			z-index: -1;
+			position: fixed;
 			inset-inline: 0;
 			inset-block-start: var(--header-block-size);
 			flex-direction: column;
-			overflow-y: auto;
 			row-gap: 32px;
 			block-size: calc(100dvh - var(--header-block-size));
 			padding-block: 100px;
 			background-color: var(--surface);
+			overflow-y: auto;
 			visibility: hidden;
 			opacity: 0;
 			transform: translateX(100%);
@@ -82,7 +90,7 @@ import ThemeToggle from "./ThemeToggle.astro"
 			transition-duration: 300ms;
 		}
 
-		.menu-active {
+		.menu.open {
 			visibility: visible;
 			opacity: 1;
 			transform: translateX(0);
@@ -130,11 +138,11 @@ import ThemeToggle from "./ThemeToggle.astro"
 			transition: transform 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
 		}
 
-		.button-active > .button-line:nth-child(1) {
+		.menu.open ~ .menu-button > .button-line:nth-child(1) {
 			transform: rotateZ(45deg) translate(2px);
 		}
 
-		.button-active > .button-line:nth-child(2) {
+		.menu.open ~ .menu-button > .button-line:nth-child(2) {
 			transform: rotateZ(-45deg) translate(2px);
 		}
 	}
@@ -152,12 +160,13 @@ import ThemeToggle from "./ThemeToggle.astro"
 </style>
 
 <script>
-	const menu = document.querySelector(".menu")!
-	const menuButton = document.querySelector(".menu-button")!
+	import { $ } from "~/utils"
+
+	const menu = $(".menu")!
+	const menuButton = $(".menu-button")!
 
 	menuButton.addEventListener("click", () => {
-		menu.classList.toggle("menu-active")
-		menuButton.classList.toggle("button-active")
+		menu.classList.toggle("open")
 		document.body.classList.toggle("menu-hide-overflow")
 	})
 </script>

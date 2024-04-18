@@ -39,9 +39,11 @@ const { class: className, ...props } = Astro.props
 </style>
 
 <script>
-	const scrollerInner = document.querySelector("#scroller-inner")!
+	import { $ } from "~/utils"
 
-	const children = Array.from(scrollerInner.children) as HTMLElement[]
+	const scrollerInner = $("#scroller-inner")!
+
+	const children = Array.from(scrollerInner.children)
 
 	children.forEach((child) => {
 		const clonedChild = child.cloneNode(true) as HTMLElement

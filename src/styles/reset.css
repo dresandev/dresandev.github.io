@@ -52,3 +52,11 @@ p {
 	overflow-wrap: break-word;
 	text-wrap: pretty;
 }
+
+ul {
+	padding-inline-start: 0;
+}
+
+li {
+	list-style: none;
+}
