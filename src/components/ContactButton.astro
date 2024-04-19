@@ -56,12 +56,6 @@ const { contentClass, ...props } = Astro.props
 		block-size: 100%;
 		background-image: var(--gradient);
 		background-size: 50%;
-		animation: move-bg 2s linear infinite;
-		animation-play-state: paused;
-	}
-
-	.button:hover::before {
-		animation-play-state: running;
 	}
 
 	.content {
@@ -73,9 +67,20 @@ const { contentClass, ...props } = Astro.props
 		transition: background-color 300ms;
 	}
 
-	@keyframes move-bg {
-		to {
-			transform: translateX(-50%);
+	@media (prefers-reduced-motion: no-preference) {
+		.button::before {
+			animation: move-bg 2s linear infinite;
+			animation-play-state: paused;
+		}
+
+		.button:hover::before {
+			animation-play-state: running;
+		}
+
+		@keyframes move-bg {
+			to {
+				transform: translateX(-50%);
+			}
 		}
 	}
 </style>

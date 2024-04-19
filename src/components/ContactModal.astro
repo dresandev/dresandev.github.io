@@ -45,7 +45,7 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 		z-index: 10;
 		inset: 0;
 		display: none;
-		padding-block: 57px;
+		padding-block: var(--header-block-size);
 		background-color: hsl(var(--surface-hsl) / 0.5);
 		backdrop-filter: blur(4px);
 		overflow-y: auto;
@@ -54,7 +54,6 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 
 	.modal.open {
 		display: flex;
-		animation: fade-in 300ms;
 	}
 
 	.card {
@@ -119,13 +118,19 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 		transition-duration: 300ms;
 	}
 
-	@keyframes fade-in {
-		from {
-			opacity: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		.modal.open {
+			animation: fade-in 300ms;
 		}
 
-		to {
-			opacity: 1;
+		@keyframes fade-in {
+			from {
+				opacity: 0;
+			}
+
+			to {
+				opacity: 1;
+			}
 		}
 	}
 </style>

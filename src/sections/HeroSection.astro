@@ -56,7 +56,6 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 	.rosette {
 		block-size: auto;
-		animation: spin 15s linear infinite;
 	}
 
 	.animalogo {
@@ -92,9 +91,15 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 		}
 	}
 
-	@keyframes spin {
-		to {
-			transform: rotate(360deg);
+	@media (prefers-reduced-motion: no-preference) {
+		.rosette {
+			animation: spin 15s linear infinite;
+		}
+
+		@keyframes spin {
+			to {
+				transform: rotate(360deg);
+			}
 		}
 	}
 </style>

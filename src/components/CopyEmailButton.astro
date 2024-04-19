@@ -1,0 +1,73 @@
+---
+interface Props {
+	class?: string
+	email: string
+}
+
+const { class: className, email, ...props } = Astro.props
+---
+
+<div class="email-wrapper">
+	<div id="email-toast" class="toast">¡Espero saber pronto de ti!</div>
+	<button id="copy-email-button" class="email-button" type="button">{email}</button>
+	<p class="indication-message">Click para copiar</p>
+</div>
+
+<style>
+	.email-wrapper {
+		position: relative;
+		padding-block: 64px;
+	}
+
+	.toast {
+		position: absolute;
+		z-index: -1;
+		padding: 8px 10px;
+		background-color: var(--text);
+		color: var(--surface);
+		inline-size: fit-content;
+		border-radius: 4px;
+		font-size: 0.875rem;
+		font-weight: 500;
+		opacity: 0;
+		transition-property: opacity, transform;
+		transition-duration: 300ms;
+	}
+
+	.enter-toast {
+		opacity: 1;
+		transform: translateY(-2.5rem);
+	}
+
+	.email-button {
+		font-size: clamp(1.563rem, 0.125rem + 4.6vi, 3rem);
+		text-decoration: underline;
+	}
+
+	.indication-message {
+		font-size: 0.875rem;
+		color: hsl(var(--text-hsl) / 0.7);
+	}
+</style>
+
+<script>
+	import { $ } from "~/utils"
+
+	const copyEmailButton = $("#copy-email-button")!
+	const emailToast = $("#email-toast")!
+	const email = copyEmailButton.textContent!
+	let toastActive = false
+
+	copyEmailButton.addEventListener("click", async () => {
+		if (toastActive) return
+
+		await navigator.clipboard.writeText(email)
+		emailToast.classList.add("enter-toast")
+		toastActive = true
+
+		setTimeout(() => {
+			emailToast.classList.remove("enter-toast")
+			toastActive = false
+		}, 5000)
+	})
+</script>

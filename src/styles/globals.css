@@ -23,7 +23,7 @@
 	--surface: hsl(0 0% 93%);
 	--text: hsl(0 0% 7%);
 	--stroke: hsl(0 0% 26%);
-	--focus-color: hsl(245deg 100% 60%);
+	--focus-color: hsl(245 100% 60%);
 	--scrollbar-thumb-color: hsl(0 0% 38%);
 
 	color-scheme: light;
@@ -76,10 +76,6 @@ html:has(.hide-overflow, .menu-hide-overflow) {
 	scrollbar-gutter: stable;
 }
 
-html {
-	scroll-behavior: smooth;
-}
-
 body {
 	max-inline-size: 1920px;
 	padding-inline: var(--inline-space);
@@ -117,5 +113,11 @@ h2 {
 @media screen and (max-width: 768px) {
 	.menu-hide-overflow {
 		overflow-y: hidden;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
 	}
 }
