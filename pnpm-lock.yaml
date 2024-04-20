@@ -13,37 +13,37 @@ importers:
         version: 4.6.3(typescript@5.4.5)
     devDependencies:
       '@antfu/eslint-config':
-        specifier: ^2.15.0
+        specifier: 2.15.0
         version: 2.15.0(@vue/compiler-sfc@3.4.23)(astro-eslint-parser@0.17.0(typescript@5.4.5))(eslint-plugin-astro@0.34.0(eslint@9.1.0)(typescript@5.4.5))(eslint@9.1.0)(prettier-plugin-astro@0.13.0)(typescript@5.4.5)
       '@astrojs/check':
-        specifier: ^0.5.10
+        specifier: 0.5.10
         version: 0.5.10(prettier-plugin-astro@0.13.0)(prettier@3.2.5)(typescript@5.4.5)
       '@types/intl':
-        specifier: ^1.2.2
+        specifier: 1.2.2
         version: 1.2.2
       '@typescript-eslint/parser':
-        specifier: ^7.7.0
+        specifier: 7.7.0
         version: 7.7.0(eslint@9.1.0)(typescript@5.4.5)
       astro-eslint-parser:
-        specifier: ^0.17.0
+        specifier: 0.17.0
         version: 0.17.0(typescript@5.4.5)
       eslint:
-        specifier: ^9.1.0
+        specifier: 9.1.0
         version: 9.1.0
       eslint-config-prettier:
-        specifier: ^9.1.0
+        specifier: 9.1.0
         version: 9.1.0(eslint@9.1.0)
       eslint-plugin-astro:
-        specifier: ^0.34.0
+        specifier: 0.34.0
         version: 0.34.0(eslint@9.1.0)(typescript@5.4.5)
       prettier:
-        specifier: ^3.2.5
+        specifier: 3.2.5
         version: 3.2.5
       prettier-plugin-astro:
-        specifier: ^0.13.0
+        specifier: 0.13.0
         version: 0.13.0
       typescript:
-        specifier: ^5.4.5
+        specifier: 5.4.5
         version: 5.4.5
 
 packages:
