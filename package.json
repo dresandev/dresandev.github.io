@@ -9,20 +9,20 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.5.14"
+    "astro": "^4.6.3"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.11.6",
-    "@astrojs/check": "^0.5.10",
-    "@types/intl": "^1.2.2",
-    "@typescript-eslint/parser": "^7.5.0",
-    "astro-eslint-parser": "^0.16.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^0.33.1",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "typescript": "^5.4.3"
+    "@antfu/eslint-config": "2.15.0",
+    "@astrojs/check": "0.5.10",
+    "@types/intl": "1.2.2",
+    "@typescript-eslint/parser": "7.7.0",
+    "astro-eslint-parser": "0.17.0",
+    "eslint": "9.1.0",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-astro": "0.34.0",
+    "prettier": "3.2.5",
+    "prettier-plugin-astro": "0.13.0",
+    "typescript": "5.4.5"
   },
   "engines": {
     "node": ">=18",
