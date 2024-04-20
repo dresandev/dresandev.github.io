@@ -23,5 +23,9 @@
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "typescript": "^5.4.3"
+  },
+  "engines": {
+    "node": ">=16",
+    "pnpm": ">=5"
   }
 }
