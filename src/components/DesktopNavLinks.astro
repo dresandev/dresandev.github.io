@@ -1,0 +1,37 @@
+---
+import { NAV_LINKS } from "~/constants"
+---
+
+{
+	NAV_LINKS.map(({ label, url }) => (
+		<li>
+			<a class="desktop-nav-link" href={url}>
+				{label}
+			</a>
+		</li>
+	))
+}
+
+<style>
+	.desktop-nav-link {
+		padding: 4px 12px;
+		font-weight: 500;
+	}
+
+	@media (hover: hover) {
+		.desktop-nav-link {
+			color: hsl(var(--text-hsl) / 0.7);
+			transition: color 300ms;
+		}
+
+		.desktop-nav-link:hover {
+			color: var(--text-hsl);
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		li {
+			display: none;
+		}
+	}
+</style>

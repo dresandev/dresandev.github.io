@@ -1,39 +1,15 @@
 ---
+import MobileNavLinks from "./MobileNavLinks.astro"
+import DesktopNavLinks from "./DesktopNavLinks.astro"
 import ContactModal from "~/components/ContactButton.astro"
 import ThemeToggle from "~/components/ThemeToggle.astro"
-
-const LINKS = [
-	{
-		label: "Inicio",
-		url: "#inicio",
-	},
-	{
-		label: "Proyectos",
-		url: "#proyectos",
-	},
-	{
-		label: "Sobre mí",
-		url: "#sobre-mí",
-	},
-	{
-		label: "Links",
-		url: "#links",
-	},
-]
 ---
 
 <div class="menu">
 	<nav class="nav">
 		<ul class="nav-list">
-			{
-				LINKS.map(({ label, url }) => (
-					<li>
-						<a class="nav-link" href={url}>
-							{label}
-						</a>
-					</li>
-				))
-			}
+			<MobileNavLinks />
+			<DesktopNavLinks />
 			<li>
 				<ContactModal contentClass="contact-button-content" />
 			</li>
@@ -61,11 +37,6 @@ const LINKS = [
 
 	.nav-list {
 		column-gap: 16px;
-	}
-
-	.nav-link {
-		padding: 4px 12px;
-		font-weight: 500;
 	}
 
 	.menu-button {
@@ -99,10 +70,6 @@ const LINKS = [
 		.nav-list {
 			flex-direction: column;
 			row-gap: 16px;
-		}
-
-		.nav-link {
-			font: 700 2.4rem var(--font-clash-display);
 		}
 
 		.contact-button-content {
@@ -159,17 +126,6 @@ const LINKS = [
 			.button-line {
 				transition: transform 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
 			}
-		}
-	}
-
-	@media (hover: hover) {
-		.nav-link {
-			color: hsl(var(--text-hsl) / 0.7);
-			transition: color 300ms;
-		}
-
-		.nav-link:hover {
-			color: var(--text-hsl);
 		}
 	}
 </style>

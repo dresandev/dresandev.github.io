@@ -1,0 +1,39 @@
+---
+import { NAV_LINKS } from "~/constants"
+---
+
+{
+	NAV_LINKS.map(({ label, url }) => (
+		<li>
+			<a class="mobile-nav-link" href={url}>
+				{label}
+			</a>
+		</li>
+	))
+}
+
+<style>
+	.mobile-nav-link {
+		font: 700 2.4rem var(--font-clash-display);
+	}
+
+	@media screen and (min-width: 768px) {
+		li {
+			display: none;
+		}
+	}
+</style>
+
+<script>
+	import { $, $$ } from "~/utils"
+
+	const menu = $(".menu")!
+	const mobileNavLinks = $$(".mobile-nav-link")
+
+	mobileNavLinks.forEach((link) => {
+		link.addEventListener("click", () => {
+			menu.classList.remove("open")
+			document.body.classList.toggle("menu-hide-overflow")
+		})
+	})
+</script>
