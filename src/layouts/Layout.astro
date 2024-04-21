@@ -100,8 +100,29 @@ const {
 		</main>
 		{showFooter && <Footer />}
 		<ContactModal />
+		<div class="noise"></div>
 	</body>
 </html>
+
+<style>
+	html[data-theme="light"] .noise {
+		--opacity: 0.1;
+	}
+	html[data-theme="dark"] .noise {
+		--opacity: 0.06;
+	}
+
+	.noise {
+		position: fixed;
+		inset: 0;
+		z-index: 100;
+		block-size: 100vh;
+		background-image: url(media/noise.gif);
+		background-size: 110px;
+		opacity: var(--opacity);
+		pointer-events: none;
+	}
+</style>
 
 <script>
 	console.log(
