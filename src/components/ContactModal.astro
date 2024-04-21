@@ -11,7 +11,7 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 				<CloseIcon />
 			</button>
 		</div>
-		<form class="form" action=`https://formspree.io/f/xoqoayzk` method="post">
+		<form id="contact-form" class="form">
 			<div class="input-wrapper">
 				<label class="label" for="name-input">Nombre</label>
 				<input class="input" id="name-input" type="text" name="name" required autocomplete="name" />
@@ -145,6 +145,7 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 
 <script>
 	import { $ } from "~/utils"
+	import Toastify from "toastify-js"
 
 	const contactModal = $("#contact-modal")!
 	const closeContactModal = $("#close-contact-modal")!
@@ -152,5 +153,52 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 	closeContactModal.addEventListener("click", () => {
 		contactModal.classList.remove("open")
 		document.body.classList.remove("hide-overflow")
+	})
+
+	const contactForm = $("#contact-form")!
+	const toastOptions: Toastify.Options | undefined = {
+		duration: 4000,
+		gravity: "bottom",
+		position: "center",
+	}
+
+	contactForm.addEventListener("submit", async (e) => {
+		try {
+			e.preventDefault()
+			const url = `https://formspree.io/f/xoqoayzk`
+			const formData = new FormData(e.target as HTMLFormElement)
+			const formDataObject: Record<string, any> = {}
+
+			formData.forEach((value, key) => {
+				formDataObject[key] = value
+			})
+
+			const response = await fetch(url, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formDataObject),
+			})
+
+			// TODO: Mover a component ContactForm, crear funcion que llame a Toastify con opciones default y reciba el mensaje, estilar toast, crear funciones que sean close menu y close modal
+			if (!response.ok) {
+				Toastify({
+					...toastOptions,
+					text: `Error en la solicitud: ${response.status}`,
+				}).showToast()
+			}
+
+			Toastify({
+				...toastOptions,
+				text: "Gracias por tu mensaje 🩵, te responderé lo antes posible",
+			}).showToast()
+		} catch (error) {
+			Toastify({
+				...toastOptions,
+				text: "Algo salió mal, intenta más tarde",
+			}).showToast()
+		} finally {
+			contactModal.classList.remove("open")
+			document.body.classList.remove("hide-overflow")
+		}
 	})
 </script>
