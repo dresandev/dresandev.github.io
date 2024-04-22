@@ -1,41 +1,17 @@
 ---
-import Action from "~/components/Action.astro"
 import CloseIcon from "~/components/SVG/CloseIcon.astro"
+import ContactForm from "./ContactForm.astro"
 ---
 
 <div id="contact-modal" class="modal" tabindex="0">
 	<div class="card">
 		<div class="header">
-			<h3 class="title">Contactar</h3>
+			<h3>Contactar</h3>
 			<button id="close-contact-modal" class="close-button" type="button">
 				<CloseIcon />
 			</button>
 		</div>
-		<form id="contact-form" class="form">
-			<div class="input-wrapper">
-				<label class="label" for="name-input">Nombre</label>
-				<input class="input" id="name-input" type="text" name="name" required autocomplete="name" />
-				<div class="border"></div>
-			</div>
-			<div class="input-wrapper">
-				<label class="label" for="email-input">Email</label>
-				<input
-					class="input"
-					id="email-input"
-					type="text"
-					name="email"
-					required
-					autocomplete="email"
-				/>
-				<div class="border"></div>
-			</div>
-			<div class="input-wrapper">
-				<label class="label" for="message-textarea">Mensaje</label>
-				<textarea class="textarea" id="message-textarea" name="message" required></textarea>
-				<div class="border"></div>
-			</div>
-			<Action as="button" type="submit">Enviar</Action>
-		</form>
+		<ContactForm />
 	</div>
 </div>
 
@@ -46,8 +22,7 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 		inset: 0;
 		display: none;
 		block-size: 100dvh;
-		padding-block: var(--header-block-size);
-		padding-inline: 16px;
+		padding: var(--header-block-size) 16px;
 		background-color: hsl(var(--surface-hsl) / 0.5);
 		backdrop-filter: blur(4px);
 		overflow-y: auto;
@@ -75,49 +50,8 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 		padding-block-end: 32px;
 	}
 
-	.title {
-		font-size: 30px;
-	}
-
-	.form {
-		display: flex;
-		flex-direction: column;
-		row-gap: 32px;
-	}
-
-	.input-wrapper:focus-within {
-		color: var(--focus-color);
-	}
-
-	.label {
-		font-weight: 500;
-		display: block;
-		transition: color 300ms;
-	}
-
-	.input,
-	.textarea {
-		inline-size: 100%;
-		background-color: unset;
-		border: none;
-		outline: none;
-	}
-
-	.input {
-		padding: 12px 0;
-	}
-
-	.textarea {
-		block-size: 150px;
-		resize: none;
-	}
-
-	.border {
-		block-size: 2px;
-		background-color: currentColor;
-		border-radius: 2px;
-		transition-property: color, transform;
-		transition-duration: 300ms;
+	h3 {
+		font-size: 1.875rem;
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
@@ -145,60 +79,12 @@ import CloseIcon from "~/components/SVG/CloseIcon.astro"
 
 <script>
 	import { $ } from "~/utils"
-	import Toastify from "toastify-js"
 
-	const contactModal = $("#contact-modal")!
 	const closeContactModal = $("#close-contact-modal")!
+	const contactModal = $("#contact-modal")!
 
 	closeContactModal.addEventListener("click", () => {
 		contactModal.classList.remove("open")
 		document.body.classList.remove("hide-overflow")
-	})
-
-	const contactForm = $("#contact-form")!
-	const toastOptions: Toastify.Options | undefined = {
-		duration: 4000,
-		gravity: "bottom",
-		position: "center",
-	}
-
-	contactForm.addEventListener("submit", async (e) => {
-		try {
-			e.preventDefault()
-			const url = `https://formspree.io/f/xoqoayzk`
-			const formData = new FormData(e.target as HTMLFormElement)
-			const formDataObject: Record<string, any> = {}
-
-			formData.forEach((value, key) => {
-				formDataObject[key] = value
-			})
-
-			const response = await fetch(url, {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(formDataObject),
-			})
-
-			// TODO: Mover a component ContactForm, crear funcion que llame a Toastify con opciones default y reciba el mensaje, estilar toast, crear funciones que sean close menu y close modal
-			if (!response.ok) {
-				Toastify({
-					...toastOptions,
-					text: `Error en la solicitud: ${response.status}`,
-				}).showToast()
-			}
-
-			Toastify({
-				...toastOptions,
-				text: "Gracias por tu mensaje 🩵, te responderé lo antes posible",
-			}).showToast()
-		} catch (error) {
-			Toastify({
-				...toastOptions,
-				text: "Algo salió mal, intenta más tarde",
-			}).showToast()
-		} finally {
-			contactModal.classList.remove("open")
-			document.body.classList.remove("hide-overflow")
-		}
 	})
 </script>

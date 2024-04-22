@@ -4,10 +4,10 @@ import Rosette from "~/components/SVG/Rosette.astro"
 import MouseIcon from "~/components/SVG/MouseIcon.astro"
 ---
 
-<section id="inicio" class="section">
-	<h1 class="title">
-		<span class="word">Dresan</span>
-		<span class="word">
+<section id="inicio">
+	<h1>
+		<span>Dresan</span>
+		<span>
 			Front-end
 			<div class="decoration">
 				<Rosette class="rosette" />
@@ -15,7 +15,7 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 			</div>
 		</span>
 
-		<span class="word">Developer</span>
+		<span>Developer</span>
 	</h1>
 
 	<div class="bottom-area">
@@ -25,25 +25,25 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 </section>
 
 <style>
-	.section {
+	section {
 		position: relative;
 		display: flex;
 		align-items: center;
 		min-block-size: 100dvh;
 	}
 
-	.title {
+	h1 {
 		inline-size: 100%;
 		font-size: clamp(2.75rem, 1.279rem + 6.861vw, 9.375rem);
 	}
 
-	.word {
+	h1 > span {
 		display: flex;
 		justify-content: center;
 		line-height: normal;
 	}
 
-	.word:nth-child(2) {
+	h1 > span:nth-child(2) {
 		flex-wrap: wrap;
 		column-gap: 16px;
 		align-items: center;
@@ -75,18 +75,18 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 	}
 
 	@media screen and (max-width: 768px) {
-		.title {
+		h1 {
 			padding-block: 150px;
 		}
 	}
 
 	@media screen and (min-width: 425px) {
-		.word:nth-child(2) {
+		h1 > span:nth-child(2) {
 			justify-content: flex-start;
 			column-gap: 32px;
 		}
 
-		.word:nth-child(3) {
+		h1 > span:nth-child(3) {
 			justify-content: flex-end;
 		}
 	}

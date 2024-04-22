@@ -33,7 +33,7 @@ import { NAV_LINKS } from "~/constants"
 	mobileNavLinks.forEach((link) => {
 		link.addEventListener("click", () => {
 			menu.classList.remove("open")
-			document.body.classList.toggle("menu-hide-overflow")
+			document.body.classList.remove("menu-hide-overflow")
 		})
 	})
 </script>

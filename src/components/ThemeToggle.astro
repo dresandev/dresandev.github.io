@@ -4,13 +4,7 @@ interface Props extends astroHTML.JSX.ButtonHTMLAttributes {}
 const { class: className, ...props } = Astro.props
 ---
 
-<button
-	id="theme-toggle"
-	class:list={["theme-toggle", className]}
-	aria-label="auto"
-	aria-live="polite"
-	{...props}
->
+<button id="theme-toggle" class:list={[className]} aria-label="auto" aria-live="polite" {...props}>
 	<svg
 		class="sun-and-moon"
 		aria-hidden="true"
@@ -38,7 +32,7 @@ const { class: className, ...props } = Astro.props
 </button>
 
 <style>
-	.theme-toggle {
+	button {
 		--size: 24px;
 		inline-size: var(--size);
 		block-size: var(--size);
@@ -75,11 +69,11 @@ const { class: className, ...props } = Astro.props
 	}
 
 	@media (hover: hover) {
-		.theme-toggle {
+		button {
 			color: hsl(var(--text-hsl) / 0.7);
 		}
 
-		.theme-toggle:hover {
+		button:hover {
 			color: var(--text);
 		}
 	}

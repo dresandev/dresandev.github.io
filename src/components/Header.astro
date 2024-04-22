@@ -3,7 +3,7 @@ import DresanAnimalogo from "~/components/SVG/DresanAnimalogo.astro"
 import NavMenu from "~/components/NavMenu.astro"
 ---
 
-<header id="header" class="header">
+<header id="header">
 	<a aria-label="Ir al inicio" href="/">
 		<DresanAnimalogo class="animalogo" />
 	</a>
@@ -12,7 +12,7 @@ import NavMenu from "~/components/NavMenu.astro"
 </header>
 
 <style>
-	.header {
+	header {
 		position: fixed;
 		inset: 0;
 		inset-block-end: unset;
@@ -29,7 +29,7 @@ import NavMenu from "~/components/NavMenu.astro"
 	}
 
 	@media screen and (min-width: 768px) {
-		.header {
+		header {
 			position: sticky;
 			inset-block-start: 24px;
 			column-gap: 20px;

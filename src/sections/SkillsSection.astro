@@ -17,21 +17,21 @@ const SKILLS = [
 ]
 ---
 
-<section class="section">
-	<h2 class="title">Tecnologías</h2>
+<section>
+	<h2>Tecnologías</h2>
 	<TextScroller class="text-scroller">
 		{SKILLS.map((skill) => <span>{skill}</span>)}
 	</TextScroller>
 </section>
 
 <style>
-	.section {
+	section {
 		padding-block: clamp(7.5rem, 6.893rem + 2.589vw, 10rem);
 		margin-inline: calc(var(--inline-space) * -1);
 		transition: background-color 300ms;
 	}
 
-	.title {
+	h2 {
 		max-inline-size: 1236px;
 		padding-inline-start: var(--inline-space);
 		margin: 0 auto 30px;

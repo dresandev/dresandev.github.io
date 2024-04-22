@@ -1,0 +1,113 @@
+---
+import Action from "./Action.astro"
+---
+
+<form id="contact-form">
+	<div class="input-wrapper">
+		<label for="name-input">Nombre</label>
+		<input id="name-input" type="text" name="name" required autocomplete="name" />
+	</div>
+	<div class="input-wrapper">
+		<label for="email-input">Email</label>
+		<input id="email-input" type="email" name="email" required autocomplete="email" />
+	</div>
+	<div class="input-wrapper">
+		<label for="message-textarea">Mensaje</label>
+		<textarea id="message-textarea" name="message" required></textarea>
+	</div>
+	<Action as="button" type="submit">Enviar</Action>
+</form>
+<p id="status-message" class="status-message"></p>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		row-gap: 32px;
+	}
+
+	.input-wrapper:focus-within {
+		color: var(--focus-color);
+	}
+
+	.input-wrapper::after {
+		content: "";
+		display: block;
+		block-size: 2px;
+		background-color: currentColor;
+		border-radius: 2px;
+		transition-property: color, transform;
+		transition-duration: 300ms;
+	}
+
+	label {
+		font-weight: 500;
+		display: block;
+		transition: color 300ms;
+	}
+
+	input,
+	textarea {
+		inline-size: 100%;
+		background-color: unset;
+		border: none;
+		outline: none;
+	}
+
+	input {
+		padding: 12px 0;
+	}
+
+	textarea {
+		block-size: 150px;
+		resize: none;
+	}
+
+	.status-message {
+		padding-block-start: 16px;
+		text-align: center;
+	}
+</style>
+
+<script>
+	import { $ } from "~/utils"
+
+	const contactForm = $("#contact-form")!
+	const statusMessage = $("#status-message")!
+
+	contactForm.addEventListener("submit", async (e) => {
+		const form = e.target as HTMLFormElement
+		form.checkValidity()
+		e.preventDefault()
+
+		try {
+			const url = "https://formspree.io/f/xoqoayzk"
+			const formData = new FormData(form)
+			const formDataObject: Record<string, any> = {}
+
+			formData.forEach((value, key) => {
+				formDataObject[key] = value
+			})
+
+			const response = await fetch(url, {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formDataObject),
+			})
+
+			if (!response.ok) {
+				statusMessage.textContent = `Error en la solicitud: ${response.status}.`
+				return
+			}
+
+			statusMessage.textContent = "Gracias por tu mensaje 🩵, responderé lo antes posible."
+		} catch (error) {
+			statusMessage.textContent = "Algo salió mal, intenta más tarde."
+		} finally {
+			form.reset()
+			setTimeout(() => {
+				statusMessage.textContent = ""
+			}, 10000)
+		}
+	})
+</script>

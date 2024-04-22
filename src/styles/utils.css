@@ -1,0 +1,13 @@
+html:has(.hide-overflow, .menu-hide-overflow) {
+	scrollbar-gutter: stable;
+}
+
+.hide-overflow {
+	overflow-y: hidden;
+}
+
+@media screen and (max-width: 768px) {
+	.menu-hide-overflow {
+		overflow-y: hidden;
+	}
+}

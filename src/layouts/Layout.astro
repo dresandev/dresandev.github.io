@@ -1,6 +1,7 @@
 ---
 import "~/styles/reset.css"
 import "~/styles/globals.css"
+import "~/styles/utils.css"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import ContactModal from "~/components/ContactModal.astro"
@@ -117,7 +118,7 @@ const {
 		inset: 0;
 		z-index: 100;
 		block-size: 100vh;
-		background-image: url(/media/noise.gif);
+		background-image: url(/media/noise-o.gif);
 		background-size: 110px;
 		opacity: var(--opacity);
 		pointer-events: none;
@@ -126,7 +127,7 @@ const {
 
 <script>
 	console.log(
-		"%cDresan 🐻",
+		"%cHola, ¿Cómo estás? 🐻",
 		`background-image:linear-gradient(
 			45deg,
 			hsl(0deg 0% 7%) 0%,
@@ -140,8 +141,8 @@ const {
 			hsl(344deg 0% 11%) 89%,
 			hsl(0deg 0% 12%) 100%
 		);
-		padding: 15px 20px;
-		font: 700 2rem "Clash Display";
+		padding: 14px 20px;
+		font: 700 1.2rem "Clash Display";
 		border-radius: 8px;`
 	)
 </script>

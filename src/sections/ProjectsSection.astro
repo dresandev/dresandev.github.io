@@ -3,21 +3,21 @@ import { projects } from "~/data/projects"
 import ProjectCard from "~/components/ProjectCard.astro"
 ---
 
-<section id="proyectos" class="section">
-	<h2 class="title">Proyectos destacados</h2>
+<section id="proyectos">
+	<h2>Proyectos destacados</h2>
 	<div class="projects-container">
 		{projects.map((project) => <ProjectCard class="projectCard" project={project} />)}
 	</div>
 </section>
 
 <style>
-	.section {
+	section {
 		max-inline-size: 1236px;
 		padding-block: var(--section-padding-block);
 		margin-inline: auto;
 	}
 
-	.title {
+	h2 {
 		inline-size: min-content;
 		margin-inline: auto;
 		text-align: center;

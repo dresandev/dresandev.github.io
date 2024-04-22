@@ -72,10 +72,6 @@
 	border-radius: 1px;
 }
 
-html:has(.hide-overflow, .menu-hide-overflow) {
-	scrollbar-gutter: stable;
-}
-
 body {
 	max-inline-size: 1920px;
 	padding-inline: var(--inline-space);
@@ -100,19 +96,9 @@ h2 {
 	font-size: clamp(2.5rem, 2.136rem + 1.553vw, 4rem);
 }
 
-.hide-overflow {
-	overflow-y: hidden;
-}
-
 @media screen and (min-width: 768px) {
 	main {
 		margin-block-start: calc(var(--header-block-size) * -1);
-	}
-}
-
-@media screen and (max-width: 768px) {
-	.menu-hide-overflow {
-		overflow-y: hidden;
 	}
 }
 

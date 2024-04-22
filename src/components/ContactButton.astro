@@ -6,12 +6,12 @@ interface Props {
 const { contentClass, ...props } = Astro.props
 ---
 
-<button id="contact-button" class="button">
+<button id="contact-button">
 	<span class:list={["content", contentClass]} {...props}>Contactar</span>
 </button>
 
 <style>
-	html[data-theme="dark"] .button::before {
+	html[data-theme="dark"] button::before {
 		--gradient: linear-gradient(
 			115deg,
 			hsl(135, 57%, 56%),
@@ -23,7 +23,7 @@ const { contentClass, ...props } = Astro.props
 		);
 	}
 
-	html[data-theme="light"] .button::before {
+	html[data-theme="light"] button::before {
 		--gradient: linear-gradient(
 			115deg,
 			hsl(135, 100%, 30%),
@@ -35,19 +35,20 @@ const { contentClass, ...props } = Astro.props
 		);
 	}
 
-	.button {
+	button {
 		position: relative;
 		padding: 2px;
 		font-weight: 500;
 		border-radius: 4px;
 		overflow: hidden;
+		-webkit-tap-highlight-color: transparent;
 	}
 
-	.button:active {
+	button:active {
 		transform: scale(0.98);
 	}
 
-	.button::before {
+	button::before {
 		content: "";
 		position: absolute;
 		inset-block-start: 0;
@@ -68,12 +69,12 @@ const { contentClass, ...props } = Astro.props
 	}
 
 	@media (prefers-reduced-motion: no-preference) {
-		.button::before {
+		button::before {
 			animation: move-bg 2s linear infinite;
 			animation-play-state: paused;
 		}
 
-		.button:hover::before {
+		button:hover::before {
 			animation-play-state: running;
 		}
 

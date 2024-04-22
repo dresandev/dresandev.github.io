@@ -12,9 +12,9 @@ const { class: className, project, ...props } = Astro.props
 const { name, description, links, tags, imageUrl } = project
 ---
 
-<article class:list={["card", className]} {...props}>
+<article class:list={[className]} {...props}>
 	<div class="info">
-		<h3 class="title">{name}</h3>
+		<h3>{name}</h3>
 		<p>{description}</p>
 
 		<div class="tags">
@@ -46,17 +46,17 @@ const { name, description, links, tags, imageUrl } = project
 </article>
 
 <style>
-	html[data-theme="light"] .card {
+	html[data-theme="light"] article {
 		--background-color: hsl(0, 0%, 82%);
 		--tag-color-hsl: 217 100% 22%;
 	}
 
-	html[data-theme="dark"] .card {
+	html[data-theme="dark"] article {
 		--background-color: hsl(0 0% 13%);
 		--tag-color-hsl: 200 75% 65%;
 	}
 
-	.card {
+	article {
 		display: flex;
 		flex-direction: column;
 		background-color: var(--background-color);
@@ -70,7 +70,7 @@ const { name, description, links, tags, imageUrl } = project
 		padding: clamp(1.875rem, 1.42rem + 1.942vw, 3.75rem);
 	}
 
-	.title {
+	h3 {
 		font-size: 2rem;
 		padding-block-end: 8px;
 	}
@@ -102,7 +102,7 @@ const { name, description, links, tags, imageUrl } = project
 		transform: translate(clamp(1.875rem, 1.42rem + 1.942vw, 3.75rem));
 	}
 
-	.image {
+	img {
 		block-size: auto;
 	}
 </style>

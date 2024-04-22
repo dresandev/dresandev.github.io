@@ -4,7 +4,7 @@ import { Tag } from './tags'
 export const projects: Project[] = [
   {
     name: 'Dreflix',
-    description: 'Sitio web dedicado a explorar el mundo cinematográfico, donde descubrirás información sobre una gran variedad de películas. Aquí podrás acceder a detalles como la sinopsis, el tráiler, el reparto principal entre otros detalles. Su diseño es una mezcla del diseño de distintas plataformas de transmisión de video como Amazon Prime y Crunchyroll.',
+    description: 'Sitio web dedicado a explorar el mundo cinematográfico, donde descubrirás información sobre una gran variedad de películas. Podrás acceder a detalles como la sinopsis, el tráiler, el reparto principal entre otros. El diseño es una mezcla del diseño de las plataformas de transmisión de video Amazon Prime y Crunchyroll.',
     tags: [
       Tag.nextJS14,
       Tag.cssModules,
@@ -25,7 +25,7 @@ export const projects: Project[] = [
   },
   {
     name: 'Vexara',
-    description: 'Clon de Bershka implementando las funcionalidades principales como el flujo de autenticación usando auth.js, el flujo de pago de productos usando la pasarela de pagos mercadopago, implementando código funcional en producción pero que al ser un proyecto de practica va a seguir en modo de desarrollo.',
+    description: 'Clon del ecommerce de Bershka implementando las funcionalidades principales como el flujo de autenticación usando auth.js, el flujo de pago de productos usando la pasarela de pagos mercadopago, maquetando la app lo mas similar posible y agregar el responsive sin usar js (que es como se hace originalmente), implementando código 100% funcional en producción.',
     tags: [
       Tag.mercadopago,
       Tag.zustand,
