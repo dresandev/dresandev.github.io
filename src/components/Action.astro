@@ -21,7 +21,12 @@ const { as: Tag, class: className, ...props } = Astro.props
 		transition-duration: 300ms;
 	}
 
+	.action:disabled,
 	.action:hover {
 		opacity: 0.75;
+	}
+
+	.action:disabled {
+		pointer-events: none;
 	}
 </style>

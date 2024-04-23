@@ -12,7 +12,7 @@ const { class: className, project, ...props } = Astro.props
 const { name, description, links, tags, imageUrl } = project
 ---
 
-<article class:list={[className]} {...props}>
+<article class:list={["project-card", className]} {...props}>
 	<div class="info">
 		<h3>{name}</h3>
 		<p>{description}</p>

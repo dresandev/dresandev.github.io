@@ -15,7 +15,7 @@ import Action from "./Action.astro"
 		<label for="message-textarea">Mensaje</label>
 		<textarea id="message-textarea" name="message" required></textarea>
 	</div>
-	<Action as="button" type="submit">Enviar</Action>
+	<Action as="button" type="submit" name="submit">Enviar</Action>
 </form>
 <p id="status-message" class="status-message"></p>
 
@@ -63,6 +63,11 @@ import Action from "./Action.astro"
 		resize: none;
 	}
 
+	input:disabled,
+	textarea:disabled {
+		opacity: 0.75;
+	}
+
 	.status-message {
 		padding-block-start: 16px;
 		text-align: center;
@@ -70,10 +75,11 @@ import Action from "./Action.astro"
 </style>
 
 <script>
-	import { $ } from "~/utils"
+	import { $, $$ } from "~/utils"
 
 	const contactForm = $("#contact-form")!
 	const statusMessage = $("#status-message")!
+	const formElements = $$("#contact-form [name]")
 
 	contactForm.addEventListener("submit", async (e) => {
 		const form = e.target as HTMLFormElement
@@ -87,6 +93,10 @@ import Action from "./Action.astro"
 
 			formData.forEach((value, key) => {
 				formDataObject[key] = value
+			})
+
+			formElements.forEach((element) => {
+				element.setAttribute("disabled", "true")
 			})
 
 			const response = await fetch(url, {
@@ -105,6 +115,7 @@ import Action from "./Action.astro"
 			statusMessage.textContent = "Algo salió mal, intenta más tarde."
 		} finally {
 			form.reset()
+			formElements.forEach((element) => element.removeAttribute("disabled"))
 			setTimeout(() => {
 				statusMessage.textContent = ""
 			}, 10000)

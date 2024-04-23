@@ -1,15 +1,15 @@
 export const NAV_LINKS = [
   {
     label: "Inicio",
-    url: "#inicio",
+    url: "#home",
   },
   {
     label: "Proyectos",
-    url: "#proyectos",
+    url: "#projects",
   },
   {
     label: "Sobre mí",
-    url: "#sobre-mí",
+    url: "#about",
   },
   {
     label: "Links",

@@ -95,6 +95,7 @@ const {
 		</style>
 	</head>
 	<body>
+		<div class="gradient"></div>
 		<Header />
 		<main>
 			<slot />
@@ -122,6 +123,32 @@ const {
 		background-size: 110px;
 		opacity: var(--opacity);
 		pointer-events: none;
+	}
+
+	html[data-theme="light"] .gradient {
+		--opacity: 0.8;
+	}
+	html[data-theme="dark"] .gradient {
+		--opacity: 0.5;
+	}
+
+	.gradient {
+		--size: 240px;
+		position: fixed;
+		z-index: -1;
+		inset-block-start: 100px;
+		inset-inline-end: 100px;
+		block-size: var(--size);
+		inline-size: var(--size);
+		border-radius: 50%;
+		background-image: linear-gradient(
+			40deg,
+			hsl(355deg 100% 52%) 0%,
+			hsl(306deg 53% 50%) 50%,
+			hsl(246deg 97% 66%) 100%
+		);
+		opacity: var(--opacity);
+		filter: blur(80px);
 	}
 </style>
 

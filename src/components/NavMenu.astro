@@ -51,7 +51,6 @@ import ThemeToggle from "~/components/ThemeToggle.astro"
 			flex-direction: column;
 			row-gap: 32px;
 			block-size: calc(100dvh - var(--header-block-size));
-			padding-block: 100px;
 			background-color: var(--surface);
 			overflow-y: auto;
 			visibility: hidden;
@@ -106,6 +105,12 @@ import ThemeToggle from "~/components/ThemeToggle.astro"
 
 		.menu.open ~ .menu-button > .button-line:nth-child(2) {
 			transform: rotateZ(-45deg) translate(2px);
+		}
+
+		@media (orientation: landscape) {
+			.menu {
+				padding-block: 100px;
+			}
 		}
 
 		@media (prefers-reduced-motion: no-preference) {

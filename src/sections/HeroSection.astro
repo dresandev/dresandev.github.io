@@ -4,7 +4,7 @@ import Rosette from "~/components/SVG/Rosette.astro"
 import MouseIcon from "~/components/SVG/MouseIcon.astro"
 ---
 
-<section id="inicio">
+<section id="home">
 	<h1>
 		<span>Dresan</span>
 		<span>
@@ -74,12 +74,6 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 		font-size: 1.125rem;
 	}
 
-	@media screen and (max-width: 768px) {
-		h1 {
-			padding-block: 150px;
-		}
-	}
-
 	@media screen and (min-width: 425px) {
 		h1 > span:nth-child(2) {
 			justify-content: flex-start;
@@ -88,6 +82,12 @@ import MouseIcon from "~/components/SVG/MouseIcon.astro"
 
 		h1 > span:nth-child(3) {
 			justify-content: flex-end;
+		}
+	}
+
+	@media (orientation: landscape) {
+		h1 {
+			padding-block: 150px;
 		}
 	}
 
