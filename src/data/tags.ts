@@ -7,4 +7,6 @@ export enum Tag {
   zustand = 'zustand',
   prismaORM = 'prisma-orm',
   authJS = 'auth-js',
+  movieExplorer = 'movie-explorer',
+  ecommerce = 'ecommerce',
 }

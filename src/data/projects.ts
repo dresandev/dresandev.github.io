@@ -4,13 +4,14 @@ import { Tag } from './tags'
 export const projects: Project[] = [
   {
     name: 'Dreflix',
-    description: 'Sitio web dedicado a explorar el mundo cinematográfico, donde descubrirás información sobre una gran variedad de películas. Podrás acceder a detalles como la sinopsis, el tráiler, el reparto principal entre otros. El diseño es una mezcla del diseño de las plataformas de transmisión de video Amazon Prime y Crunchyroll.',
+    description: 'Aplicación web para explorar películas, con funcionalidades como infinite scroll, un buscador de películas enfocándose en la navegación por teclado al estilo del buscador de YouTube, un carrusel para promocionar películas con características como autoplay solo cuando esté en el viewport o la pestaña tenga el foco, animaciones al cambiar y mostrar un nuevo ítem, entre otros muchos detalles y funcionalidades. El diseño de la app es una combinación entre el diseño de la aplicación de Amazon Prime Video y Crunchyroll.',
     tags: [
       Tag.nextJS14,
       Tag.cssModules,
       Tag.typescript,
       Tag.theMovieDB,
       Tag.zustand,
+      Tag.movieExplorer,
     ],
     links: [
       {
@@ -26,13 +27,15 @@ export const projects: Project[] = [
   },
   {
     name: 'Vexara',
-    description: 'Clon del ecommerce de Bershka implementando las funcionalidades principales como el flujo de autenticación usando auth.js, el flujo de pago de productos usando la pasarela de pagos mercadopago, maquetando la app lo mas similar posible y agregar el responsive sin usar js (que es como se hace originalmente), implementando código 100% funcional en producción.',
+    description: 'Clon del ecommerce de Bershka implementando las funcionalidades principales como el flujo de autenticación usando auth.js, el flujo de pago de productos usando la pasarela de pagos mercadopago, maquetando la app lo mas similar posible, agregando el responsive sin usar js (que es como se hace originalmente), implementando código 100% funcional en producción.',
     tags: [
       Tag.mercadopago,
       Tag.zustand,
       Tag.prismaORM,
       Tag.nextJS14,
       Tag.authJS,
+      Tag.typescript,
+      Tag.ecommerce,
     ],
     links: [
       {
