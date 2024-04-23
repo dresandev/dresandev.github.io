@@ -1,5 +1,9 @@
 # Personal Website
 
+## Screenshots
+
+![dresan](https://github.com/dresandev/dresandev.github.io/assets/79766563/182c338f-9869-4f27-a328-bff7138d420c)
+
 ## Preview
 
 ![preview](https://github.com/dresandev/dresandev.github.io/assets/79766563/17320ce8-8327-475b-a540-0bafc08dd1aa)
