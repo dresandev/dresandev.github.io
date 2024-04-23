@@ -10,6 +10,7 @@ export const projects: Project[] = [
       Tag.cssModules,
       Tag.typescript,
       Tag.theMovieDB,
+      Tag.zustand,
     ],
     links: [
       {
