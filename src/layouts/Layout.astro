@@ -2,9 +2,11 @@
 import "~/styles/reset.css"
 import "~/styles/globals.css"
 import "~/styles/utils.css"
+import Gradient from "~/components/Gradient.astro"
 import Header from "~/components/Header.astro"
 import Footer from "~/components/Footer.astro"
 import ContactModal from "~/components/ContactModal.astro"
+import Noise from "~/components/Noise.astro"
 
 interface Props {
 	title: string
@@ -95,62 +97,16 @@ const {
 		</style>
 	</head>
 	<body>
-		<div class="gradient"></div>
+		<Gradient />
 		<Header />
 		<main>
 			<slot />
 		</main>
 		{showFooter && <Footer />}
 		<ContactModal />
-		<div class="noise"></div>
+		<Noise />
 	</body>
 </html>
-
-<style>
-	html[data-theme="light"] .noise {
-		--opacity: 0.1;
-	}
-	html[data-theme="dark"] .noise {
-		--opacity: 0.06;
-	}
-
-	.noise {
-		position: fixed;
-		inset: 0;
-		z-index: 100;
-		block-size: 100vh;
-		background-image: url(/media/noise.gif);
-		background-size: 110px;
-		opacity: var(--opacity);
-		pointer-events: none;
-	}
-
-	html[data-theme="light"] .gradient {
-		--opacity: 0.8;
-	}
-	html[data-theme="dark"] .gradient {
-		--opacity: 0.5;
-	}
-
-	.gradient {
-		--size: 240px;
-		position: fixed;
-		z-index: -1;
-		inset-block-start: 100px;
-		inset-inline-end: 100px;
-		block-size: var(--size);
-		inline-size: var(--size);
-		border-radius: 50%;
-		background-image: linear-gradient(
-			40deg,
-			hsl(355deg 100% 52%) 0%,
-			hsl(306deg 53% 50%) 50%,
-			hsl(246deg 97% 66%) 100%
-		);
-		opacity: var(--opacity);
-		filter: blur(80px);
-	}
-</style>
 
 <script>
 	console.log(
