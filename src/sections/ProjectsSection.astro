@@ -24,13 +24,16 @@ import ProjectCard from "~/components/ProjectCard.astro"
 	}
 
 	.projects-container {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 32px;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		justify-content: center;
+		gap: 16px;
 		padding-block-start: clamp(1.875rem, 0.813rem + 4.531vw, 6.25rem);
 	}
 
-	.projectCard {
-		flex: 1 1 350px;
+	@media screen and (max-width: 768px) {
+		.projects-container {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>
